@@ -24,16 +24,16 @@ const Tracking = ({trackingID, packageTracking, onHideModal }: trackingProps) =>
     
      return ( 
         <main className="fixed h-screen w-full bg-black bg-opacity-80 flex items-center justify-center z-[70] top-0 left-0">
-            <div className="relative w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[50%] h-[42rem] bg-bgWhite p-4 md:p-8">
+            <div className="relative w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[50%] h-[45rem] bg-bgWhite p-4 md:p-8">
                 <div className="absolute top-4 right-4 text-red-600">
                     <RxCrossCircled size={24} className="cursor-pointer" onClick={onHideModal}/>
                 </div>
                 <div>
-                    <p className="text-xs font-semibold">TRACKING ID</p>
+                    <p className="text-black/70 text-xs font-semibold">TRACKING ID</p>
                     <p className="mt-1 font-light text-base sm:text-lg md:text-xl">{trackingID}</p>
                 </div>
                 <div className="mt-4">
-                    <p className="text-xs font-semibold">Estimated Delivery</p>
+                    <p className="text-black/70 text-xs font-semibold">Estimated Delivery</p>
                     <p className="mt-1 font-light text-base sm:text-lg md:text-xl">{formatDateTime(packageTracking.estimatedDeliveryDate)}</p>
                 </div>
                 
@@ -43,8 +43,8 @@ const Tracking = ({trackingID, packageTracking, onHideModal }: trackingProps) =>
                         <div className={`h-[2rem] w-3 rounded-t-3xl ${firstStatus ? "bg-bgGreen" : "bg-bgGrey"}  mx-auto`}></div>
                         <div className={`${firstStatus?.status === lastStatus ? "bg-bgGreen animate-bounce" : "bg-white"} h-2 w-2 rounded-[50%] mx-auto absolute z-10 left-[40%]`}></div>
                         <div className="absolute left-[100%] w-[14rem] sm:w-[20rem]">
-                            <p className="text-xs font-semibold">FROM</p>
-                            <p className="font-light text-base sm:text-lg md:text-xl">{firstStatus && packageTracking.originPort}</p>
+                            <p className="text-xs font-semibold">PACKAGE STATUS(es)</p>
+                            <p className="font-light text-base sm:text-lg md:text-xl">{firstStatus && firstStatus.status}</p>
                             <p className="text-xs text-black capitalize">{firstStatus ? firstStatus?.location : ""}</p>
                             <p className="text-xs text-bgGreen">{formatDateTime(firstStatus?.timestamp ?? "Time Unavailable")}</p>
                         </div>
@@ -88,9 +88,16 @@ const Tracking = ({trackingID, packageTracking, onHideModal }: trackingProps) =>
                     </div>
                     
                 </div>
-            <div className="mt-8">
-                <p className="text-xs font-semibold">{packageTracking.transportationMode} to</p>
-                <p className="mt-1 font-light text-base sm:text-lg md:text-xl">{packageTracking.destinationPort}</p>
+            <div className="mt-8 flex flex-col gap-y-5 md:flex-row md:justify-between">
+                <div>
+                    <p className="text-black/70 text-xs font-semibold">From</p>
+                    <p className="font-light text-base sm:text-lg md:text-xl">{packageTracking.originPort}</p>
+                </div>
+                <div>
+                    <p className="text-black/70 text-xs font-semibold">{packageTracking.transportationMode} to</p>
+                    <p className="font-light text-base sm:text-lg md:text-xl">{packageTracking.destinationPort}</p>  
+                </div>
+                
             </div>
             </div>
         </main>
