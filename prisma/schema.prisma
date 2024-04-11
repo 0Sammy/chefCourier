@@ -43,7 +43,7 @@ model PackageStatusChange {
   id            String        @id @default(auto()) @map("_id") @db.ObjectId
   realTimestamp DateTime      @default(now())
   timestamp     String
-  status        PackageStatus
+  status        String
   location      String?
   package       Package       @relation(fields: [packageId], references: [id])
   packageId     String        @db.ObjectId
@@ -84,14 +84,3 @@ enum TransportationMode {
   Rail
 }
 
-enum PackageStatus {
-  PickedUp
-  PackageReceived
-  InTransitRoad
-  InFlight
-  InShip
-  InRail
-  Arrived
-  OutForDelivery
-  Delivered
-}

@@ -11,7 +11,7 @@ const Others = () => {
   return (
     <main className="flex flex-col gap-y-5">
       <p className="mt-10 text-xs md:text-sm">
-        Embark on a seamless journey with United Traverse&apos;s comprehensive
+        Embark on a seamless journey with KJC Solution&apos;s comprehensive
         courier services. From our efficient Parcel Courier for swift and secure
         deliveries to specialized solutions like Medical Couriers and Legal
         Couriers, we prioritize the secure and timely transport of sensitive
@@ -39,7 +39,7 @@ const Others = () => {
           <div className="absolute bottom-0 left-0 w-6 md:w-10">
             <Image
               src={logo}
-              alt="United Traverse Logo"
+              alt="KJC Solution Logo"
               className="rounded-md"
               placeholder="blur"
             />
@@ -55,7 +55,7 @@ const Others = () => {
           <div className="absolute bottom-0 right-0 w-6 md:w-10">
             <Image
               src={logo}
-              alt="United Traverse Logo"
+              alt="KJC Solution Logo"
               className="rounded-md"
               placeholder="blur"
             />

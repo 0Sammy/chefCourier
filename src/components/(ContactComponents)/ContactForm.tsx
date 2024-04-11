@@ -85,15 +85,14 @@ const ContactForm = () => {
                 <MdEmail size={30} className="text-orange"/>
                 <div>
                     <p className="text-lg font-bold md:text-xl">Email</p>
-                    <p className="text-xs md:text-sm mt-1">Contactus@unitedtraverse.com</p>
+                    <p className="text-xs md:text-sm mt-1">Contactus@kjcsolution.net</p>
                 </div>
             </div>
             <div className="flex gap-x-3 rounded-md border border-blue p-4 shrink-0">
                 <HiLocationMarker size={30} className="text-orange"/>
                 <div>
                     <p className="text-lg font-bold md:text-xl">Address</p>
-                    <p className="text-xs md:text-sm mt-1">112 Commerce Parkway Suite 405 Metropolitan City,
-                      United States.</p>
+                    <p className="text-xs md:text-sm mt-1">378-380, Deansgate A56 Manchester, M3 4LY - 192</p>
                 </div>
             </div>
           </div>

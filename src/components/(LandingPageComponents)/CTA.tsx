@@ -18,7 +18,7 @@ const CTA = () => {
           Ready To Join The Future?
         </h1>
         <p className="text-xs md:text-sm mt-5 md:mt-10">
-          Are you ready to join the future? Choosing United Traverse will be the
+          Are you ready to join the future? Choosing KJC Solution will be the
           last difficult decision you will have to make. Call us right now and
           let the most powerful logistics solution ever developed make decisions
           for you.

@@ -24,20 +24,17 @@ const Tracking = ({trackingID, packageTracking, onHideModal }: trackingProps) =>
     
      return ( 
         <main className="fixed h-screen w-full bg-black bg-opacity-80 flex items-center justify-center z-[70] top-0 left-0">
-            <div className="relative w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[50%] h-[40rem] bg-bgWhite p-4 md:p-8">
+            <div className="relative w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[50%] h-[42rem] bg-bgWhite p-4 md:p-8">
                 <div className="absolute top-4 right-4 text-red-600">
                     <RxCrossCircled size={24} className="cursor-pointer" onClick={onHideModal}/>
                 </div>
                 <div>
-                    <p className="text-xs font-semibold">DELIVERY STATUS</p>
-                    <div className="flex gap-x-2 items-center mt-1">
-                        <p className="font-light text-base sm:text-lg md:text-xl">{formatStatus(lastStatus)}</p>
-                        <FaCircleCheck className="shrink-0 text-bgGreen animate-pulse" size={24}/>
-                    </div>
+                    <p className="text-xs font-semibold">TRACKING ID</p>
+                    <p className="mt-1 font-light text-base sm:text-lg md:text-xl">{trackingID}</p>
                 </div>
                 <div className="mt-4">
-                <p className="text-xs font-semibold">TRACKING ID</p>
-                    <p className="mt-1 font-light text-base sm:text-lg md:text-xl">{trackingID}</p>
+                    <p className="text-xs font-semibold">Estimated Delivery</p>
+                    <p className="mt-1 font-light text-base sm:text-lg md:text-xl">{formatDateTime(packageTracking.estimatedDeliveryDate)}</p>
                 </div>
                 
                 <div className="mt-4 flex flex-col justify-center w-10">
@@ -91,6 +88,10 @@ const Tracking = ({trackingID, packageTracking, onHideModal }: trackingProps) =>
                     </div>
                     
                 </div>
+            <div className="mt-8">
+                <p className="text-xs font-semibold">{packageTracking.transportationMode} to</p>
+                <p className="mt-1 font-light text-base sm:text-lg md:text-xl">{packageTracking.destinationPort}</p>
+            </div>
             </div>
         </main>
      );

@@ -24,28 +24,28 @@ const Summary = ({packageLength, packagesDelivered, contactForms, quotes}: Packa
             </div>
             <div className="flex gap-x-5 overflow-x-auto special mt-10 pb-4">
                <div className="w-1/4 min-w-[18rem] bg-[#4CB9E7] p-8 flex gap-x-5 rounded-md">
-               <PiPackageFill className="text-white" size={40}/>
+               <PiPackageFill className="text-white mt-1" size={30}/>
                     <div className="text-white ">
                         <p className="text-2xl md:text-3xl font-bold">{packageLength}</p>
                         <p className="text-base">Total Packages</p>
                     </div>
                 </div>
                 <div className="w-1/4 min-w-[18rem] bg-[#FB8B24] p-8 flex gap-x-5 rounded-md">
-                    <BsInfoCircleFill className="text-white" size={40}/>
+                    <BsInfoCircleFill className="text-white mt-1" size={30}/>
                     <div className="text-white ">
                         <p className="text-2xl md:text-3xl font-bold">{contactForms}</p>
                         <p className="text-base">Total Support</p>
                     </div>
                 </div>
                 <div className="w-1/4 min-w-[18rem] bg-[#65B741] p-8 flex gap-x-5 rounded-md">
-                    <BsFillPatchCheckFill className="text-white" size={40}/>
+                    <BsFillPatchCheckFill className="text-white mt-1" size={30}/>
                     <div className="text-white ">
                         <p className="text-2xl md:text-3xl font-bold">{packagesDelivered}</p>
                         <p className="text-base">Total Packages Delivered</p>
                     </div>
                 </div> 
                 <div className="w-1/4 min-w-[18rem] bg-red-600 p-8 flex gap-x-5 rounded-md">
-                    <MdReceiptLong className="text-white" size={40}/>
+                    <MdReceiptLong className="text-white mt-1" size={30}/>
                     <div className="text-white ">
                         <p className="text-2xl md:text-3xl font-bold">{quotes}</p>
                         <p className="text-base">Total Requested Quotes</p>

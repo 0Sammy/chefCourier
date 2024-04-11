@@ -10,8 +10,8 @@ import Footer from "@/components/Footer";
 
 
 export const metadata: Metadata = {
-  title: 'United Traverse Courier Services.',
-  description: `Welcome to UnitedTraverse, your premier destination for seamless courier solutions! At UnitedTraverse, we take pride in being more than just a courier service. We're your reliable partner in connecting people and businesses across the globe.`,
+  title: 'KJC Solution Courier Services.',
+  description: `Welcome to KJC Solution, your premier destination for seamless courier solutions! At KJC Solution, we take pride in being more than just a courier service. We're your reliable partner in connecting people and businesses across the globe.`,
 }
 
 export default function RootLayout({

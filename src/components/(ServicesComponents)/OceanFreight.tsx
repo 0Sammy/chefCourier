@@ -17,7 +17,7 @@ const OceanFreight = () => {
         spectrum of shipping requirements. Embarking on a journey of maritime
         excellence, we present a range of services that cater to every need.{" "}
         <br /> <br />
-        At United Traverse, we set sail with a commitment to excellence in Ocean
+        At KJC Solution, we set sail with a commitment to excellence in Ocean
         Freight services, ensuring that every shipment, regardless of size or
         complexity, reaches its destination with precision, security, and
         unparalleled reliability.
@@ -33,7 +33,7 @@ const OceanFreight = () => {
           <div className="absolute bottom-0 left-0 w-6 md:w-10">
             <Image
               src={logo}
-              alt="United Traverse Logo"
+              alt="KJC Solution Logo"
               className="rounded-md"
               placeholder="blur"
             />
@@ -49,7 +49,7 @@ const OceanFreight = () => {
           <div className="absolute bottom-0 right-0 w-6 md:w-10">
             <Image
               src={logo}
-              alt="United Traverse Logo"
+              alt="KJC Solution Logo"
               className="rounded-md"
               placeholder="blur"
             />

@@ -18,7 +18,7 @@ const RoadFrieght = () => {
         turn, we present a range of services that cater to every road freight
         need. <br />
         <br />
-        At United Traverse, our commitment to excellence extends to the highways
+        At KJC Solution, our commitment to excellence extends to the highways
         and byways. With our Road Freight services, we guarantee that every
         shipment is handled with precision, speed, and the unwavering
         reliability of our trucking fleet.
@@ -34,7 +34,7 @@ const RoadFrieght = () => {
           <div className="absolute bottom-0 left-0 w-6 md:w-10">
             <Image
               src={logo}
-              alt="United Traverse Logo"
+              alt="KJC Solution Logo"
               className="rounded-md"
               placeholder="blur"
             />
@@ -50,7 +50,7 @@ const RoadFrieght = () => {
           <div className="absolute bottom-0 right-0 w-6 md:w-10">
             <Image
               src={logo}
-              alt="United Traverse Logo"
+              alt="KJC Solution Logo"
               className="rounded-md"
               placeholder="blur"
             />

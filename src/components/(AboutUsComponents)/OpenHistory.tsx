@@ -27,17 +27,17 @@ const OpenHistory = () => {
         </div>
         <div className="overflow-y-auto my-10 h-[80%]">
           <p className="text-sm leading-relaxed font-[500]">
-            Inaugurated in 2005, <span className="text-orange">United Traverse </span>originated as a vision in the
+            Inaugurated in July 29 2016, <span className="text-orange">KJC Solution </span>originated as a vision in the
             bustling landscape of the United States. Witnessing a surge in
             demand for efficient shipping and courier services, we established
             our roots in the heart of commerce. <br /> <br /> Over the years, our commitment
             to excellence propelled us to unprecedented heights, solidifying our
             reputation as a trailblazer in the industry. Recognizing the growing
             international market, we embarked on a strategic expansion journey. <br /> <br />
-            In 2012, responding to the call for our services in the Middle East,
+            In 2018, responding to the call for our services in the Middle East,
             we proudly opened our branch in the vibrant city of Baghdad, Iraq. 
             This pivotal move allowed us to seamlessly connect continents,
-            bridging the gap between East and West. <br /> <br /><span className="text-orange">United Traverse</span> has evolved
+            bridging the gap between East and West. <br /> <br /><span className="text-orange">KJC Solution</span> has evolved
             into a comprehensive courier service provider, offering a spectrum
             of solutions across air and sea shipments, express deliveries, and
             custom logistics. <br /> <br />Our unwavering dedication to customer satisfaction

@@ -58,10 +58,10 @@ const FirstSection = () => {
             </div>
             <div className="w-1/2">
               <p className="text-xs md:text-sm"> <span className="text-orange font-bold text-sm md:text-base">&apos;&apos;</span>
-                As the Operations Manager at United Traverse, I take pride in
+                As the Operations Manager at KJC Solution, I take pride in
                 orchestrating a seamless logistics network. Our commitment to
                 efficiency ensures swift deliveries, while strategic planning
-                and a dedicated team drive our success. United Traverse is not
+                and a dedicated team drive our success. KJC Solution is not
                 just a shipping company; it&apos;s a promise of reliability, speed,
                 and excellence in every operation. <span className="text-orange font-bold text-sm md:text-base">&apos;&apos;</span>
               </p>

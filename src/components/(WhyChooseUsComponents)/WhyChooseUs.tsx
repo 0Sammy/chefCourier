@@ -10,9 +10,9 @@ const WhyChooseUs = () => {
     <main className="bg-bgWhite px-4 pt-[8rem] sm:px-10 md:px-12 lg:px-14 ">
       <div className="flex flex-col items-center gap-y-10 lg:flex-row lg:items-end lg:justify-between lg:gap-y-0 xl:items-center">
         <div className="relative w-full lg:w-[49%]">
-            <Image src={aboutUs} alt="United Traverse Warehouse Img" className="rounded-xl" placeholder="blur"/>
+            <Image src={aboutUs} alt="KJC Solution Warehouse Img" className="rounded-xl" placeholder="blur"/>
             <div className="bg-orange rounded-lg shadow-sm w-10 absolute bottom-0 left-0">
-            <Image src={logo} alt="United Traverse Logo" placeholder="blur"/>
+            <Image src={logo} alt="KJC Solution Logo" placeholder="blur"/>
             </div>
         </div>
         <div className="w-full lg:w-[49%]">
@@ -24,10 +24,10 @@ const WhyChooseUs = () => {
             Over The World
           </h1>
           <p className="mb-8 text-xs md:text-sm leading-relaxed">
-            At United Traverse, we transcend boundaries to facilitate the export
+            At KJC Solution, we transcend boundaries to facilitate the export
             and import of goods worldwide. Our dedication to excellence drives
             seamless global transactions, supported by strategic partnerships
-            and advanced logistics. <br /> <br />United Traverse ensures the efficient flow
+            and advanced logistics. <br /> <br />KJC Solution ensures the efficient flow
             of goods across international markets, inviting you to explore the
             diversity of our global trade network. Experience the synergy of
             quality and innovation as you embark on a journey with us into

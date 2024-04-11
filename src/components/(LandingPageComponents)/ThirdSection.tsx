@@ -12,12 +12,12 @@ export default function ThirdSection() {
       <div className="absolute inset-0 bg-black bg-opacity-80"></div>
       <div className="relative px-4 sm:px-10 md:px-12 lg:px-14">
         <h1 className="text-center text-lg font-bold sm:text-xl md:text-2xl lg:text-3xl">
-          Why United Traverse?
+          Why KJC Solution?
         </h1>
         <div className="mt-20 flex flex-col-reverse items-center gap-y-10 md:flex-row md:items-start md:justify-between">
           <div className="w-full md:w-1/2 lg:w-[45%]">
             <p className="text-sm font-bold sm:text-base md:text-lg lg:text-xl text-orange">
-              Unveiling the Advantages of United Traverse
+              Unveiling the Advantages of KJC Solution
             </p>
             <p className="mt-10 text-xs md:text-sm">
               We take great pride in offering the best shipping and

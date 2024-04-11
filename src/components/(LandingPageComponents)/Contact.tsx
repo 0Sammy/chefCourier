@@ -19,8 +19,8 @@ const initialState: InitialStateProps = {
 
 const Contact = () => {
   //Copying of the emails states and variables
-  const supportEmail = "Support@unitedtraverse.com";
-  const partnershipEmail = "Partnership@unitedtraverse.com";
+  const supportEmail = "Support@kjcsolution.com";
+  const partnershipEmail = "Partnership@kjcsolution.com";
   const [supportCopied, setSupportCopied] = useState<boolean>(false);
   const [partnershipCopied, setPartnershipCopied] = useState<boolean>(false);
   const [show, setShow] = useState<boolean>(false);
@@ -168,7 +168,7 @@ const Contact = () => {
                   className="cursor-grabbing text-base font-bold md:text-lg"
                   onClick={handleCopyPartnership}
                 >
-                  Partnership@unitedtraverse.com
+                  Partnership@kjcsolution.net
                 </h1>
                 {partnershipCopied && (
                   <p className="text-xs">Copied to clipboard!</p>
@@ -190,7 +190,7 @@ const Contact = () => {
                   className="cursor-grabbing text-base font-bold md:text-lg"
                   onClick={handleCopySupport}
                 >
-                  Support@unitedtraverse.com
+                  Support@kjcsolution.net
                 </h1>
                 {supportCopied && (
                   <p className="text-xs">Copied to clipboard!</p>

@@ -27,8 +27,8 @@ export default function Footer(){
             </div>
             <div className="flex flex-col">
             <h4 className="font-bold text-orange">Contact Us</h4>
-            <p className="mt-2">General Inquiries: contactus@unitedtraverse.com</p>
-            <p className="mt-2">Support: support@unitedtraverse.com</p>
+            <p className="mt-2">General Inquiries: contactus@kjcsolution.net</p>
+            <p className="mt-2">Support: support@kjcsolution.net</p>
             <Link className="mt-2 hover:bg-orange duration-500 hover:px-2 rounded-md py-2" href="/faq">FAQ</Link>         
             </div>
             <div className="flex flex-col">
@@ -44,7 +44,7 @@ export default function Footer(){
             <div className="flex flex-row items-center">
                 <div className="border-r border-white pr-4">
                     <div className="p-4 bg-orange">
-                        <Image src={logo} alt="United Traverse Logo" className="w-20 md:w-10" placeholder="blur"/>  
+                        <Image src={logo} alt="KJC Solution Logo" className="w-20 md:w-10" placeholder="blur"/>  
                     </div>
                 </div>
                <div className="ml-4">

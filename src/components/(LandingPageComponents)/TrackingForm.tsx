@@ -48,7 +48,7 @@ export default function TrackingForm() {
           onHideModal={handleHideModal}
         />
       )}
-      <div className="mx-auto w-[90%] bg-white px-2 py-8 sm:w-[80%] sm:px-4 md:w-[90%] md:px-6 lg:w-[60%] lg:px-8">
+      <div className="mx-auto bg-white px-4 py-8 w-[95%] sm:w-[90%] lg:w-[80%] xl:w-[70%] 2xl:w-[60%]">
         <p className="font-bold text-orange">Tracking Details</p>
         <form className="mt-8" action={trackPackage}>
           <div className="w-full">

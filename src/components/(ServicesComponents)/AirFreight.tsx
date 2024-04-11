@@ -29,7 +29,7 @@ const AirFreight = () => {
         Furthermore, leverage our extensive Global Network Air Freight for
         international shipments, connecting you to key destinations worldwide.{" "}
         <br />
-        <br /> At United Traverse, we understand that each shipment is unique.
+        <br /> At KJC Solution, we understand that each shipment is unique.
         With our diverse portfolio of Air Freight services, we stand ready to
         meet your shipping needs with precision, speed, and unwavering
         reliability.
@@ -45,7 +45,7 @@ const AirFreight = () => {
           <div className="absolute bottom-0 left-0 w-6 md:w-10">
             <Image
               src={logo}
-              alt="United Traverse Logo"
+              alt="KJC Solution Logo"
               className="rounded-md"
               placeholder="blur"
             />
@@ -61,7 +61,7 @@ const AirFreight = () => {
           <div className="absolute bottom-0 right-0 w-6 md:w-10">
             <Image
               src={logo}
-              alt="United Traverse Logo"
+              alt="KJC Solution Logo"
               className="rounded-md"
               placeholder="blur"
             />

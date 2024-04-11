@@ -17,7 +17,7 @@ const Consult = () => {
           />
           <p className="text-sm md:text-base mt-10 leading-relaxed">
             Discover a seamless solution to all your shipping and courier needs
-            with United Traverse. Our comprehensive services ensure that whether
+            with KJC Solution. Our comprehensive services ensure that whether
             it&apos;s express deliveries, international shipments, or custom
             logistics, we stand as the ultimate answer to your shipping
             requirements, providing reliability, efficiency, and a commitment to

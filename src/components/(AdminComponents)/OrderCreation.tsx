@@ -94,7 +94,7 @@ const OrderCreation = ({ onClose }: OrderDetailsProps) => {
         handleFormReset()
         setLoading(false);
         toast.success("The Package was created successfully.");
-        router.refresh();
+        window.location.reload()
       },
       onError: (error: any) => {
         // Handle error
@@ -114,7 +114,7 @@ const OrderCreation = ({ onClose }: OrderDetailsProps) => {
     <main
       className={`fixed left-0 top-0 z-[70] flex h-screen w-full items-center justify-center bg-black bg-opacity-50`}
     >
-      <div className="special h-[40rem] w-80 overflow-y-auto bg-bgWhite p-4 sm:w-96 md:w-[30rem] lg:w-[40rem]">
+      <div className="special1 h-[40rem] w-80 overflow-y-auto bg-bgWhite p-4 sm:w-96 md:w-[30rem] lg:w-[40rem]">
         <div className="flex justify-end">
           <RxCross1
             size={24}

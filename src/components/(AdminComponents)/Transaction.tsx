@@ -31,7 +31,7 @@ const Transaction = (orders : any) => {
             </div>
             }
             </div>
-            <div className="flex justify-end my-10">
+            <div className="flex md:justify-end my-10 text-xs md:text-sm xl:text-base">
                 <Link href="/admin/orders" className="p-3 bg-orange text-white rounded-md font-semibold hover:bg-orange1 duration-500">Create New Order</Link>
             </div>
         </main>

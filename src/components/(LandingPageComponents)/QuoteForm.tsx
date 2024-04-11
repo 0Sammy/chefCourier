@@ -70,7 +70,7 @@ export default function QuoteForm(){
     return(
         <>
         {show && <StatusModal theStatus={status} onHideModal={handleHideModal}/>}
-        <div className="bg-white px-2 sm:px-4 md:px-6 lg:px-8 py-8 sm:w-[80%] md:w-[90%] lg:w-[60%] mx-auto">
+        <div className="bg-white px-4 py-8 w-[95%] sm:w-[90%] lg:w-[80%] xl:w-[70%] 2xl:w-[60%] mx-auto">
             <p className="text-orange font-bold">Personal Data</p>
             <form className="mt-8 text-xs sm:text-sm md:text-base" onSubmit={onSubmit}>
                 <div className="flex flex-col gap-y-2 md:gap-y-0 md:flex-row md:justify-between md:gap-x-3">

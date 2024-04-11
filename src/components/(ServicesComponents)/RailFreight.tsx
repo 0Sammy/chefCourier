@@ -10,13 +10,13 @@ const RailFreight = () => {
   return (
     <main className="flex flex-col gap-y-5">
       <p className="mt-10 text-xs md:text-sm">
-        Discover the steadfast reliability of United Traverse&apos;s Rail
+        Discover the steadfast reliability of KJC Solution&apos;s Rail
         Freight services — a robust solution that harnesses the efficiency of
         rail transportation. As the tracks weave through diverse landscapes, we
         present an array of services designed to cater to a spectrum of rail
         freight needs. <br />
         <br />
-        At United Traverse, our Rail Freight services signify a commitment to
+        At KJC Solution, our Rail Freight services signify a commitment to
         sustainable and efficient logistics. With the reliability of rail
         transportation, we provide a comprehensive solution that combines speed,
         security, and the precision needed for the successful transit of your
@@ -33,7 +33,7 @@ const RailFreight = () => {
           <div className="absolute bottom-0 left-0 w-6 md:w-10">
             <Image
               src={logo}
-              alt="United Traverse Logo"
+              alt="KJC Solution Logo"
               className="rounded-md"
               placeholder="blur"
             />
@@ -49,7 +49,7 @@ const RailFreight = () => {
           <div className="absolute bottom-0 right-0 w-6 md:w-10">
             <Image
               src={logo}
-              alt="United Traverse Logo"
+              alt="KJC Solution Logo"
               className="rounded-md"
               placeholder="blur"
             />

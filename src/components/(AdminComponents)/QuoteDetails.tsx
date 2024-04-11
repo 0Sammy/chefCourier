@@ -13,7 +13,7 @@ const QuoteDetails = (quoteDetails: any) => {
         {quoteDetails && quoteDetails.length !== 0 && quoteDetails.quoteDetails.map((detail: any) => (
           <div
             key={detail.id}
-            className="special h-72 w-1/4 min-w-[18rem] overflow-auto rounded-md bg-orange p-4 text-white"
+            className="special1 h-72 w-1/4 min-w-[18rem] overflow-auto rounded-md bg-orange p-4 text-white"
           >
             <div className="mt-1 flex flex-col gap-y-1">
               <p className="text-xs md:text-sm">Full Name</p>

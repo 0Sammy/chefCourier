@@ -11,13 +11,13 @@ const ImportExport = () => {
   return (
     <main className="flex flex-col gap-y-5">
       <p className="mt-10 text-xs md:text-sm">
-        Unlock the world of global trade with United Traverse&apos;s Import and
+        Unlock the world of global trade with KJC Solution&apos;s Import and
         Export services — a gateway to seamless international commerce.
         Navigating the complexities of borders and regulations, we offer a
         comprehensive suite of services tailored to facilitate the movement of
         goods across the globe. <br />
         <br />
-        At United Traverse, our Import and Export services are designed to
+        At KJC Solution, our Import and Export services are designed to
         empower businesses with a global reach. With a commitment to efficiency,
         compliance, and reliability, we pave the way for your goods to traverse
         borders seamlessly in the dynamic landscape of international trade.
@@ -33,7 +33,7 @@ const ImportExport = () => {
           <div className="absolute bottom-0 left-0 w-6 md:w-10">
             <Image
               src={logo}
-              alt="United Traverse Logo"
+              alt="KJC Solution Logo"
               className="rounded-md"
               placeholder="blur"
             />
@@ -49,7 +49,7 @@ const ImportExport = () => {
           <div className="absolute bottom-0 right-0 w-6 md:w-10">
             <Image
               src={logo}
-              alt="United Traverse Logo"
+              alt="KJC Solution Logo"
               className="rounded-md"
               placeholder="blur"
             />

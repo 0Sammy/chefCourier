@@ -1,84 +1,94 @@
 import getIndividualPackage from "@/app/actions/getIndividualPackage";
-import getStatus from "@/app/actions/getStatus"
 import { formatDateTime } from "@/lib/dateTimeUtils";
 import { formatDate } from "@/lib/dateUtils";
 
 //Import Needed Components
 import StatusChange from "@/components/(AdminComponents)/StatusChange";
+import Status from "@/components/(AdminComponents)/Status";
 
 
-export const revalidate = 60
-
+export const revalidate = 1
 const Page = async ({ params }: { params: { id: string } }) => {
     const packageId = params.id
 
-    const thePackageArray = await getIndividualPackage(packageId)
-    const packageStatus = await getStatus(packageId)
-    
-    const thePackage = thePackageArray[0];
-    const theStatus = packageStatus[0]
-    //Switch Statement for the status
-    function getDisplayStatus(status: string | undefined): string {
-        switch (status) {
-            case 'PickedUp':
-              return 'Picked Up';
-              break;
-            case 'PackageReceived':
-              return 'Package Received';
-              break;
-            case 'InTransitRoad':
-                return 'Package In Transit (Road)';
-              break;
-            case 'InFlight':
-                return 'Package In Flight';
-              break;
-            case 'InShip':
-                return 'Package In Ship';
-              break;
-            case 'InRail':
-                return 'Package In Train';
-              break;
-            case 'Arrived':
-                return 'Package Arrived';
-              break;
-            case 'OutForDelivery':
-                return 'Package Out For Delivery';
-              break;
-            case 'Delivered':
-                return 'Package Delivered';
-              break;
-        
-              default:
-                return "No Status Yet";
-              break;
-        }
-    }
+    const thePackage = await getIndividualPackage(packageId)
+    const packageStatuses = thePackage?.statusChanges
+  
     return ( 
-        <main>
-            <div className="w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] mx-auto mt-20">
-            <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold mt-4 text-center">Package Details</p>
-            <div className="flex flex-col gap-y-3 mt-10">
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold flex justify-between gap-x-5">Tracking Code <span className="text-orange">{thePackage.trackingNumber}</span></p>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold flex justify-between gap-x-5">Origin Port <span className="text-orange">{thePackage.originPort}</span></p>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold flex justify-between gap-x-5">Destination Port <span className="text-orange">{thePackage.destinationPort}</span></p>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold flex justify-between gap-x-5">Transportation Mode <span className="text-orange">{thePackage.transportationMode}</span></p>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold flex justify-between gap-x-5">Pieces(Quantity) <span className="text-orange">{thePackage.pieces}</span></p>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold flex justify-between gap-x-5">Weight (KG) <span className="text-orange">{thePackage.weight} KG</span></p>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold flex justify-between gap-x-5">Length (CM)<span className="text-orange">{thePackage.length} CM</span></p>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold flex justify-between gap-x-5">Width (CM)<span className="text-orange">{thePackage.width} CM</span></p>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold flex justify-between gap-x-5">Height (CM)<span className="text-orange">{thePackage.height} CM</span></p>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold flex justify-between gap-x-5">Delivery Required Date and Time<span className="text-orange text-right">{formatDateTime(thePackage.deliveryRequiredDate)}</span></p>
-            <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold flex justify-between gap-x-5">Current Status<span className="text-orange">{getDisplayStatus(theStatus ? theStatus.status : "No Status Yet")}</span></p>
-            <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold flex justify-between gap-x-5">Current Status Location<span className="text-orange text-right">{theStatus ? theStatus.location ?? "No Location Yet" : "No Location Yet"}</span></p>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold flex justify-between gap-x-5">Current Status Time Update<span className="text-orange text-right">{theStatus ? (formatDateTime(theStatus.timestamp)) : "No Time Yet"}</span></p>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold flex justify-between gap-x-5">Estimated Delivery Date and Time<span className="text-orange text-right">{formatDateTime(thePackage.estimatedDeliveryDate)}</span></p>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold flex justify-between gap-x-5">Desired Created Date and Time<span className="text-orange text-right">{formatDateTime(thePackage.dateCreated)}</span></p>
-                <p className="text-xs sm:text-sm md:text-base lg:text-lg font-bold flex justify-between gap-x-5">Real Created Date<span className="text-orange text-right">{formatDate(thePackage.realDateCreated)}</span></p>
-                <div className="border-b border-black my-4"></div>
-                <p className="text-xs sm:text-sm md:text-base font-bold mt-4 text-center">Update Package Status</p>
-                <StatusChange thePackageID={packageId}/>
+        <main className="px-4 md:px-6 xl:px-8 py-8 text-xs md:text-sm xl:text-base">
+          <div className="flex flex-col gap-y-3 lg:gap-y-0 lg:flex-row lg:justify-between">
+            <div className="lg:w-[40%] border border-[#7676801F] p-4 rounded-xl">
+                <p className="font-semibold text-[#141619]">Package Basic Info</p>
+                <div className="flex flex-col gap-y-2 mt-4">
+                  <div className="flex flex-col ga-y-1">
+                      <p className="text-[0.6rem] md:text-xs xl:text-sm text-black/50">Tracking Number</p>
+                      <p className="font-medium">{thePackage?.trackingNumber}</p>
+                  </div>
+                  <div className="flex flex-col ga-y-1">
+                      <p className="text-[0.6rem] md:text-xs xl:text-sm text-black/50">Origin Port</p>
+                      <p className="font-medium">{thePackage?.originPort}</p>
+                  </div>
+                  <div className="flex flex-col ga-y-1">
+                      <p className="text-[0.6rem] md:text-xs xl:text-sm text-black/50">Destination Port</p>
+                      <p className="font-medium">{thePackage?.destinationPort}</p>
+                  </div>
+                  <div className="flex flex-col ga-y-1">
+                      <p className="text-[0.6rem] md:text-xs xl:text-sm text-black/50">Transportation Mode</p>
+                      <p className="font-medium">{thePackage?.transportationMode}</p>
+                  </div>
+                  <div className="flex flex-col ga-y-1">
+                      <p className="text-[0.6rem] md:text-xs xl:text-sm text-black/50">Estimated Delivery Date and Time</p>
+                      <p className="font-medium">{formatDateTime(thePackage?.estimatedDeliveryDate ?? "")}</p>
+                    </div>
+                </div>
             </div>
-        </div>
+            <div className="lg:w-[58%] border border-[#7676801F] p-4 rounded-xl">
+                <p className="font-semibold text-[#141619]">Package Other Info</p>
+                <div className="flex flex-col gap-y-2 mt-4">
+                    <div className="flex flex-col ga-y-1">
+                      <p className="text-[0.6rem] md:text-xs xl:text-sm text-black/50">Pieces</p>
+                      <p className="font-medium">{thePackage?.pieces}</p>
+                    </div>
+                    <div className="flex flex-col ga-y-1">
+                      <p className="text-[0.6rem] md:text-xs xl:text-sm text-black/50">Weight (KG)</p>
+                      <p className="font-medium">{thePackage?.weight}</p>
+                    </div>
+                    <div className="flex flex-col ga-y-1">
+                      <p className="text-[0.6rem] md:text-xs xl:text-sm text-black/50">Length (CM)</p>
+                      <p className="font-medium">{thePackage?.length}</p>
+                    </div>
+                    <div className="flex flex-col ga-y-1">
+                      <p className="text-[0.6rem] md:text-xs xl:text-sm text-black/50">Width (CM)</p>
+                      <p className="font-medium">{thePackage?.width}</p>
+                    </div>
+                    <div className="flex flex-col ga-y-1">
+                      <p className="text-[0.6rem] md:text-xs xl:text-sm text-black/50">Height (CM)</p>
+                      <p className="font-medium">{thePackage?.height}</p>
+                    </div>
+                    <div className="flex flex-col ga-y-1">
+                      <p className="text-[0.6rem] md:text-xs xl:text-sm text-black/50">Selected Created Date and Time</p>
+                      <p className="font-medium">{formatDateTime(thePackage?.dateCreated ?? "")}</p>
+                    </div>
+                    <div className="flex flex-col ga-y-1">
+                      <p className="text-[0.6rem] md:text-xs xl:text-sm text-black/50">Real Created Date and Time</p>
+                      <p className="font-medium">{formatDate(thePackage?.realDateCreated ?? new Date)}</p>
+                    </div>
+                </div>
+            </div>
+          </div>
+          <div className="flex flex-col gap-y-3 lg:gap-y-0 lg:flex-row lg:justify-between mt-10">
+            <div className="lg:w-[58%] border border-[#7676801F] p-4 rounded-xl">
+              <div className="flex justify-between">
+                <p className="font-semibold text-[#141619]">Status Updates</p>
+                <p>From the LATEST to the LEAST</p>
+              </div>        
+              <Status packageStatuses={packageStatuses}/>
+            </div>
+            <div className="lg:w-[40%] border border-[#7676801F] p-4 rounded-xl">
+              <p className="font-semibold text-[#141619]">New Status</p>
+              <StatusChange thePackageID={packageId}/>
+            </div>
+          </div>
     </main>
  );
 }

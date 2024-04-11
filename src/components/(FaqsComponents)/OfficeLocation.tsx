@@ -38,8 +38,7 @@ const OfficeLocation = () => {
                   <div>
                     <p className="text-lg font-bold md:text-xl">Address</p>
                     <p className="text-xs md:text-sm mt-1">
-                      112 Commerce Parkway Suite 405 Metropolitan City,
-                      United States.
+                      378-380, Deansgate A56 Manchester, M3 4LY - 192
                     </p>
                   </div>
                 </div>
@@ -48,7 +47,7 @@ const OfficeLocation = () => {
                   <div>
                     <p className="text-lg font-bold md:text-xl">Email</p>
                     <p className="text-xs md:text-sm mt-1">
-                      Info@unitedtraverse.com
+                      Info@kjcsolution.com
                     </p>
                   </div>
                 </div>
@@ -74,7 +73,7 @@ const OfficeLocation = () => {
                   <div>
                     <p className="text-lg font-bold md:text-xl">Email</p>
                     <p className="text-xs md:text-sm mt-1">
-                      Info@unitedtraverse.com
+                      Info@kjcsolution.com
                     </p>
                   </div>
                 </div>

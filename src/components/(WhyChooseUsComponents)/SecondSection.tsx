@@ -14,10 +14,10 @@ const SecondSection = () => {
   // eslint-disable-next-line react/jsx-key
   const icons = [<LiaShipSolid />,<LiaWarehouseSolid />,<IoMdPaperPlane />,<LiaTruckSolid />,
   ];
-  const texts = [ "Experience unparalleled reliability in Sea Freight with United Traverse—our meticulous planning and global network ensure timely deliveries across oceans.",
-                  "United Traverse's Warehousing solutions guarantee optimal storage and distribution efficiency, providing a seamless link in your supply chain.",
-                  "Choose United Traverse for Air Freight excellence—our swift and secure aerial logistics ensure your shipments reach their destinations with unmatched speed.",
-                  "In Trucking, United Traverse stands out for its precision and flexibility, delivering your goods on time, every time, with a commitment to reliability and safety."
+  const texts = [ "Experience unparalleled reliability in Sea Freight with KJC Solution—our meticulous planning and global network ensure timely deliveries across oceans.",
+                  "KJC Solution's Warehousing solutions guarantee optimal storage and distribution efficiency, providing a seamless link in your supply chain.",
+                  "Choose KJC Solution for Air Freight excellence—our swift and secure aerial logistics ensure your shipments reach their destinations with unmatched speed.",
+                  "In Trucking, KJC Solution stands out for its precision and flexibility, delivering your goods on time, every time, with a commitment to reliability and safety."
   ];
   const headings = [
     "Sea Freight", "Warehousing", "Air Freight", "Trucking"
