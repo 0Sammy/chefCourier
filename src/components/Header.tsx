@@ -1,8 +1,12 @@
 "use client";
+import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from "framer-motion";
+
+//Import Needed Images
+import Logo from "../../public/images/logo.svg";
 
 //Import Icons
 import { LuMenuSquare } from "react-icons/lu";
@@ -19,7 +23,7 @@ export default function Header() {
   return (
     <main className={`${pathname === "/who-are-you/register" || pathname === "/who-are-you/login" ? "hidden" : ""} bg-bgWhite px-4 py-2 sm:px-10 md:px-4 md:py-4 lg:px-14`}>
           <div className="flex items-center justify-between font-semibold">
-              <Link href="/" className="cursor-pointer font-bold text-xl tracking-tight md:tracking-[-0.1rem] sm:text-2xl md:text-3xl lg:text-4xl">KJC <span className="tracking-tight text-orange">Solution</span><span className="text-4xl">.</span></Link>
+              <Link href="/"><Image src={Logo} alt="Logo" className="w-40 lg:w-full"/></Link>
             <div className="hidden md:flex md:gap-x-2 lg:gap-x-8">
             <Link
                 href="/about"

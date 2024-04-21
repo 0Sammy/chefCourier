@@ -53,12 +53,12 @@ const ServiceOverview = () => {
 
   switch (show) {
     case 'air':
-        icon = <GiCommercialAirplane className="text-orange text-sm sm:text-base md:text-lg lg:text-xl"/> 
+        icon = <GiCommercialAirplane className="text-sm sm:text-base md:text-lg lg:text-xl"/> 
       content = <p className="text-xs md:text-sm">Air Freight</p>;
       body = <AirFreight />
       break;
     case 'ocean':
-        icon = <LiaShipSolid className="text-orange text-sm sm:text-base md:text-lg lg:text-xl"/>
+        icon = <LiaShipSolid className="text-sm sm:text-base md:text-lg lg:text-xl"/>
       content = <p className="text-xs md:text-sm">Ocean Freight</p>;
       body = <OceanFreight />
       break;
@@ -68,22 +68,22 @@ const ServiceOverview = () => {
       body = <RoadFrieght />
       break;
     case 'rail':
-        icon = <BsTrainFreightFrontFill className="text-orange text-sm sm:text-base md:text-lg lg:text-xl"/>
+        icon = <BsTrainFreightFrontFill className="text-sm sm:text-base md:text-lg lg:text-xl"/>
       content = <p className="text-xs md:text-sm">Rail Freight.</p>;
       body = <RailFreight />
       break;
     case 'import':
-        icon = <VscArrowSwap className="text-orange text-sm sm:text-base md:text-lg lg:text-xl"/>
+        icon = <VscArrowSwap className="text-sm sm:text-base md:text-lg lg:text-xl"/>
       content = <p className="text-xs md:text-sm">Import & Export.</p>;
       body = <ImportExport />
       break;
     case 'other':
-        icon = <BsFillPatchQuestionFill className="text-orange text-sm sm:text-base md:text-lg lg:text-xl"/>
+        icon = <BsFillPatchQuestionFill className="text-sm sm:text-base md:text-lg lg:text-xl"/>
       content = <p className="text-xs md:text-sm">Other Services.</p>;
       body = <Others />
       break;
     default:
-        icon = <GiCommercialAirplane className="text-orange text-sm sm:text-base md:text-lg lg:text-xl"/>
+        icon = <GiCommercialAirplane className="text-sm sm:text-base md:text-lg lg:text-xl"/>
       content = <p className="text-xs md:text-sm">Air Freight</p>;
       body = <AirFreight />
   }
@@ -102,7 +102,7 @@ const ServiceOverview = () => {
                 </div>
                 <p
                   onClick={() => setShow(servicesArray[index].status)}
-                  className={`text-${show === servicesArray[index].status ? "orange" : "white" } cursor-pointer font-semibold transform duration-500 hover:translate-x-2`}
+                  className={`text-${show === servicesArray[index].status ? "orange1" : "white" } cursor-pointer font-semibold transform duration-500 hover:translate-x-2`}
                 >
                   {servicesArray[index].name}
                 </p>
@@ -115,13 +115,13 @@ const ServiceOverview = () => {
             </h1>
             <Link
               href="/contact"
-              className="rounded-md border border-orange bg-orange px-6 py-3 text-white duration-500 hover:bg-white hover:text-orange"
+              className="rounded-md px-6 py-3 bg-white text-orange duration-500"
             >
               Contact Us
             </Link>
           </div>
           <div className="w-60 shrink-0 rounded-xl bg-blue px-4 py-8 lg:w-full xl:px-8">
-            <h1 className="mb-10 text-xl font-bold text-orange lg:text-2xl">
+            <h1 className="mb-10 text-xl font-bold text-white lg:text-2xl">
               Follow Us On
             </h1>
             <div className="flex justify-between">

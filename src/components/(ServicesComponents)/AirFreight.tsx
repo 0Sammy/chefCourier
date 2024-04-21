@@ -3,7 +3,7 @@ import Link from "next/link";
 //Import Images
 import air from "../../../public/images/air.jpeg";
 import air1 from "../../../public/images/air1.jpeg";
-import logo from "../../../public/images/logo.png";
+import logo from "../../../public/images/logo.svg";
 //Import Icons
 import { MdGppGood } from "react-icons/md";
 
@@ -47,7 +47,6 @@ const AirFreight = () => {
               src={logo}
               alt="KJC Solution Logo"
               className="rounded-md"
-              placeholder="blur"
             />
           </div>
         </div>
@@ -63,7 +62,6 @@ const AirFreight = () => {
               src={logo}
               alt="KJC Solution Logo"
               className="rounded-md"
-              placeholder="blur"
             />
           </div>
         </div>

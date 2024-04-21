@@ -3,7 +3,7 @@ import Link from "next/link";
 //Import Images
 import rail from "../../../public/images/rail.jpeg";
 import rail1 from "../../../public/images/rail1.jpeg";
-import logo from "../../../public/images/logo.png";
+import logo from "../../../public/images/logo.svg";
 //Import Icons
 import { MdGppGood } from "react-icons/md";
 const RailFreight = () => {
@@ -30,7 +30,7 @@ const RailFreight = () => {
             className="transform rounded-xl duration-500 hover:scale-105"
             placeholder="blur"
           />
-          <div className="absolute bottom-0 left-0 w-6 md:w-10">
+          <div className="absolute bottom-0 left-0">
             <Image
               src={logo}
               alt="KJC Solution Logo"
@@ -46,7 +46,7 @@ const RailFreight = () => {
             className="transform rounded-xl duration-500 hover:scale-105"
             placeholder="blur"
           />
-          <div className="absolute bottom-0 right-0 w-6 md:w-10">
+          <div className="absolute bottom-0 right-0">
             <Image
               src={logo}
               alt="KJC Solution Logo"

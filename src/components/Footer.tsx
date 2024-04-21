@@ -1,14 +1,14 @@
 "use client"
 import { usePathname } from 'next/navigation'
 //Needed Images
-import logo from "../../public/images/logo.png";
+import logo from "../../public/images/logo.svg";
 //Deafult Mechanism
 import Image from "next/image";
 import Link from "next/link";
 export default function Footer(){
     const pathname = usePathname()
     return(
-        <main className={`${pathname === "/who-are-you/register" || pathname === "/who-are-you/login" ? "hidden" : ""} pt-[14rem] pb-[4rem] px-4 sm:px-10 md:px-12 lg:px-14 bg-footerBrown text-white text-xs sm:text-sm md:text-base`}>
+        <main className={`${pathname === "/who-are-you/register" || pathname === "/who-are-you/login" ? "hidden" : ""} pt-[14rem] pb-[4rem] px-4 sm:px-10 md:px-12 lg:px-14 bg-black text-white text-xs sm:text-sm md:text-base`}>
             <div className="text-white flex flex-col space-y-8 lg:space-y-0 lg:flex-row justify-between">
             <div className="flex flex-col">
                 <h4 className="font-bold text-orange">Quick Actions</h4>
@@ -43,8 +43,8 @@ export default function Footer(){
         <div className="mt-16 flex flex-row justify-between border-y border-white py-4">
             <div className="flex flex-row items-center">
                 <div className="border-r border-white pr-4">
-                    <div className="p-4 bg-orange">
-                        <Image src={logo} alt="KJC Solution Logo" className="w-20 md:w-10" placeholder="blur"/>  
+                    <div className="p-4 bg-white">
+                        <Image src={logo} alt="KJC Solution Logo" className='md:w-40'/>  
                     </div>
                 </div>
                <div className="ml-4">

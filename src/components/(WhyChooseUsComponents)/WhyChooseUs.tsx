@@ -1,7 +1,7 @@
 import Image from "next/image";
 //Import images
 import aboutUs from "../../../public/images/aboutUs1.jpeg";
-import logo from "../../../public/images/logo.png";
+import logo from "../../../public/images/logo.svg";
 //Import Icons
 import { GrChatOption } from "react-icons/gr";
 import { MdSupportAgent } from "react-icons/md";
@@ -11,8 +11,8 @@ const WhyChooseUs = () => {
       <div className="flex flex-col items-center gap-y-10 lg:flex-row lg:items-end lg:justify-between lg:gap-y-0 xl:items-center">
         <div className="relative w-full lg:w-[49%]">
             <Image src={aboutUs} alt="KJC Solution Warehouse Img" className="rounded-xl" placeholder="blur"/>
-            <div className="bg-orange rounded-lg shadow-sm w-10 absolute bottom-0 left-0">
-            <Image src={logo} alt="KJC Solution Logo" placeholder="blur"/>
+            <div className="bg-white rounded-lg shadow-sm absolute bottom-0 left-0 p-2">
+            <Image src={logo} alt="KJC Solution Logo" className="w-40"/>
             </div>
         </div>
         <div className="w-full lg:w-[49%]">
