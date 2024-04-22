@@ -53,8 +53,9 @@ export default function Register() {
     setLoading(true)
     const formData = state;
 
-    if (passPhrase !== process.env.NEXT_PUBLIC_ACCOUNT_CREATION_PASSPHRASE) {
+    if (passPhrase !== process.env.ACCOUNT_CREATION_PASSPHRASE) {
       toast.error("LMAO, you are playing, STOP PLAYING!!!");
+      setLoading(false)
       return;
     }
     makeApiRequest("/register", "post", formData, {
