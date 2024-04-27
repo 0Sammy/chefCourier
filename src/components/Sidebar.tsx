@@ -15,7 +15,8 @@ import { AiOutlineCloseSquare } from "react-icons/ai";
 import { LuMenuSquare } from "react-icons/lu";
 import { IoMdContact } from "react-icons/io";
 
-const Sidebar = () => {
+
+const Sidebar = ({currentRole}: {currentRole: string}) => {
     const pathName = usePathname()
   //For the sidebar
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -58,6 +59,16 @@ const Sidebar = () => {
           >
             <FaFileSignature size={24} /> Quotes
           </Link>
+          {currentRole === "superAdmin" &&
+            <Link
+              href="/admin/admin"
+              prefetch
+              className={`${pathName === "/admin/quote" ? "text-orange -translate-y-2 translate-x-2" : "text-white"} flex items-center gap-x-3 rounded-md p-4 text-sm  duration-500 hover:-translate-y-2 hover:translate-x-2 hover:text-orange hover:underline focus:-translate-y-2 focus:translate-x-2 focus:text-orange active:text-orange md:text-base`}
+            >
+            <RiAdminFill  size={24} /> Admin
+            </Link>
+          }
+          
         </div>
         <button
           onClick={() => signOut()}
@@ -67,7 +78,7 @@ const Sidebar = () => {
         </button>
       </div>
       <LuMenuSquare
-        className="relative left-4 top-4 mt-2 cursor-pointer text-orange focus:text-blue lg:hidden"
+        className="relative left-4 top-4 mt-2 cursor-pointer text-orange focus:text-blue lg:hidden z-40"
         size={40}
         onClick={toggleOpen}
       />
@@ -104,26 +115,35 @@ const Sidebar = () => {
                 <MdReceiptLong size={24} /> Orders
               </Link>
               <Link
-            href="/admin/contact"
-            prefetch
-            className={`${pathName === "/admin/contact" ? "text-orange -translate-y-2 translate-x-2" : "text-white"} flex items-center gap-x-3 rounded-md p-4 text-sm  duration-500 hover:-translate-y-2 hover:translate-x-2 hover:text-orange hover:underline focus:-translate-y-2 focus:translate-x-2 focus:text-orange active:text-orange md:text-base`}
-          >
-            <IoMdContact size={24} /> Contact
-          </Link>
-          <Link
-            href="/admin/quote"
-            prefetch
-            className={`${pathName === "/admin/quote" ? "text-orange -translate-y-2 translate-x-2" : "text-white"} flex items-center gap-x-3 rounded-md p-4 text-sm  duration-500 hover:-translate-y-2 hover:translate-x-2 hover:text-orange hover:underline focus:-translate-y-2 focus:translate-x-2 focus:text-orange active:text-orange md:text-base`}
-          >
-            <FaFileSignature size={24} /> Quotes
-          </Link>
-            </div>
-            <button
-              onClick={() => signOut()}
-              className={`absolute bottom-20 flex items-center gap-x-3 rounded-md p-4 text-sm text-white duration-500 hover:-translate-y-2 hover:translate-x-2 hover:text-orange hover:underline focus:-translate-y-2 focus:translate-x-2 focus:text-orange active:text-orange`}
-            >
+                href="/admin/contact"
+                prefetch
+                className={`${pathName === "/admin/contact" ? "text-orange -translate-y-2 translate-x-2" : "text-white"} flex items-center gap-x-3 rounded-md p-4 text-sm  duration-500 hover:-translate-y-2 hover:translate-x-2 hover:text-orange hover:underline focus:-translate-y-2 focus:translate-x-2 focus:text-orange active:text-orange md:text-base`}
+              >
+                <IoMdContact size={24} /> Contact
+              </Link>
+              <Link
+              href="/admin/quote"
+              prefetch
+              className={`${pathName === "/admin/quote" ? "text-orange -translate-y-2 translate-x-2" : "text-white"} flex items-center gap-x-3 rounded-md p-4 text-sm  duration-500 hover:-translate-y-2 hover:translate-x-2 hover:text-orange hover:underline focus:-translate-y-2 focus:translate-x-2 focus:text-orange active:text-orange md:text-base`}
+              >
+                <FaFileSignature size={24} /> Quotes
+              </Link>
+              {currentRole === "superAdmin" &&
+                <Link
+                  href="/admin/admin"
+                  prefetch
+                  className={`${pathName === "/admin/quote" ? "text-orange -translate-y-2 translate-x-2" : "text-white"} flex items-center gap-x-3 rounded-md p-4 text-sm  duration-500 hover:-translate-y-2 hover:translate-x-2 hover:text-orange hover:underline focus:-translate-y-2 focus:translate-x-2 focus:text-orange active:text-orange md:text-base`}
+                >
+                <RiAdminFill  size={24} /> Admin
+                </Link>
+              }
+              </div>
+              <button
+                onClick={() => signOut()}
+                className={`absolute bottom-20 flex items-center gap-x-3 rounded-md p-4 text-sm text-white duration-500 hover:-translate-y-2 hover:translate-x-2 hover:text-orange hover:underline focus:-translate-y-2 focus:translate-x-2 focus:text-orange active:text-orange`}
+              >
               <LuLogOut size={24} /> Logout
-            </button>
+              </button>
           </motion.div>
         )}
       </AnimatePresence>

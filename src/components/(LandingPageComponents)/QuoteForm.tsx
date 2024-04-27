@@ -1,28 +1,28 @@
 "use client"
 import { FormEvent, useState } from "react";
 import { makeApiRequest } from "@/lib/apiUtils";
-//Import Needed Modals
+import { toast } from "sonner";
+
+//Import Types
+import { quoteProps } from "@/types/default";
+
+//Import Needed Components
+import CountrySelect from "../molecules/CountrySelect";
 import StatusModal from "./StatusModal";
 
-type InitialStateProps = {
-    fullName: string;
-    email: string;
-    phoneNumber: string;
-    pickupLocation: string;
-    deliveryLocation: string;
-    chosenDateTime: string;
-    importantDetails: string;
-  };
-  const initialState: InitialStateProps = {
+
+
+const initialState: quoteProps = {
     fullName: "",
     email: "",
     phoneNumber: "",
-    pickupLocation: "",
-    deliveryLocation: "",
-    chosenDateTime: "",
-    importantDetails: "",
-  };
-export default function QuoteForm(){
+    address: "",
+    country: "",
+    serialNumber: "",
+    nearestAirport: "",
+};
+
+export default function QuoteForm({ allSerialNumbers }: { allSerialNumbers: string[]; }){
     //Form States and Functions
     const [state, setState] = useState(initialState)
     const [loading, setLoading] = useState<boolean>(false)
@@ -45,6 +45,13 @@ export default function QuoteForm(){
   const onSubmit = (event: FormEvent) => {
     event.preventDefault();
     setLoading(true)
+
+    if (!allSerialNumbers.includes(state.serialNumber)) {
+      toast.error("Serial number does not exist. Kindly enter the correct one.")
+      setLoading(false)
+      return
+    }
+
     const formData = state;
 
     makeApiRequest("/quote", "post", formData, {
@@ -70,45 +77,42 @@ export default function QuoteForm(){
     return(
         <>
         {show && <StatusModal theStatus={status} onHideModal={handleHideModal}/>}
-        <div className="bg-white px-4 py-8 w-[95%] sm:w-[90%] lg:w-[80%] xl:w-[70%] 2xl:w-[60%] mx-auto">
-            <p className="text-orange font-bold">Personal Data</p>
+        <div className="bg-white px-4 sm:px-6 md:px-8 xl:px-12 py-8 w-[95%] sm:w-[90%] lg:w-[80%] xl:w-[70%] 2xl:w-[60%] mx-auto text-xs:text-sm xl:text-base font-semibold">
+            <p className="text-orange font-bold">Needed Information</p>
             <form className="mt-8 text-xs sm:text-sm md:text-base" onSubmit={onSubmit}>
-                <div className="flex flex-col gap-y-2 md:gap-y-0 md:flex-row md:justify-between md:gap-x-3">
-                   <div className="w-full md:w-1/3">
-                    <input required type="text" name="fullName" onChange={handleChange} value={state.fullName} className="w-full peer focus:outline-none border-b focus:border-orange border-footerBrown  px-4 py-2"/> 
-                    <p className="text-xs md:text-sm font-bold relative -top-[3rem] peer-focus:-top-[3.5rem] duration-500">Full Name</p>
-                   </div>
-                   <div className="w-full md:w-1/3">
-                    <input type="email" name="email" onChange={handleChange} value={state.email} className="w-full peer focus:outline-none border-b focus:border-orange border-footerBrown  px-4 py-2"/> 
-                    <p className="text-xs md:text-sm font-bold relative -top-[3rem] peer-focus:-top-[3.5rem] duration-500">Email</p>
-                    <p className="text-xs text-orange relative -top-4 font-bold invisible peer-invalid:visible">Invalid Email</p>
-                   </div>
-                   <div className="w-full md:w-1/3">
-                      <input required type="tel" name="phoneNumber" onChange={handleChange} value={state.phoneNumber} className="w-full peer focus:outline-none border-b focus:border-orange border-footerBrown px-4 py-2"/> 
-                      <p className="text-xs md:text-sm font-bold relative -top-[3rem] peer-focus:-top-[3.5rem] duration-500">Phone Number</p>
-                   </div>
-                </div>
-                <p className="text-orange font-bold mt-4">Package Information</p>
-                <div className="flex flex-col gap-y-2 md:gap-y-0 md:flex-row md:justify-between md:gap-x-3 mt-8">
+                  <div className="w-full my-4">
+                    <input required type="text" name="serialNumber" onChange={handleChange} value={state.serialNumber} className="w-full peer focus:outline-none border-b focus:border-orange border-footerBrown  px-4 py-2"/> 
+                    <p className="text-xs md:text-sm font-bold relative -top-[3.5rem] peer-focus:-top-[4rem] duration-500">Serial Number</p>
+                  </div>
+                  <div className="flex flex-col gap-y-4 md:flex-row md:justify-between md:gap-x-3">
                     <div className="w-full md:w-1/3">
-                      <input required type="text" name="pickupLocation" onChange={handleChange} value={state.pickupLocation} className="w-full peer focus:outline-none border-b focus:border-orange border-footerBrown px-4 py-2"/> 
-                      <p className="text-xs md:text-sm font-bold relative -top-[3rem] peer-focus:-top-[3.5rem] duration-500">Pickup Location</p>
+                     <input required type="text" name="fullName" onChange={handleChange} value={state.fullName} className="w-full peer focus:outline-none border-b focus:border-orange border-footerBrown px-4 py-2"/> 
+                     <p className="text-xs md:text-sm font-bold relative -top-[3.5rem] peer-focus:-top-[4rem] duration-500">Full Name</p>
                     </div>
                     <div className="w-full md:w-1/3">
-                      <input required type="text" name="deliveryLocation" onChange={handleChange} value={state.deliveryLocation} className="w-full peer focus:outline-none border-b focus:border-orange border-footerBrown px-4 py-2"/> 
-                      <p className="text-xs md:text-sm font-bold relative -top-[3rem] peer-focus:-top-[3.5rem] duration-500">Delivery Location</p>
-                   </div>
-                   <div className="w-full md:w-1/3">
-                      <input required type="datetime-local" name="chosenDateTime" onChange={handleChange} value={state.chosenDateTime} className="w-full peer focus:outline-none border-b focus:border-orange border-footerBrown px-4 py-[0.425rem] cursor-pointer"/> 
-                      <p className="text-xs md:text-sm font-bold relative -top-[3rem] peer-focus:-top-[3.5rem] duration-500">Date and Time</p>
-                   </div>
+                     <input type="email" name="email" onChange={handleChange} value={state.email} className="w-full peer focus:outline-none border-b focus:border-orange border-footerBrown  px-4 py-2"/> 
+                     <p className="text-xs md:text-sm font-bold relative -top-[3.5rem] peer-focus:-top-[4rem] duration-500">Email</p>
+                     <p className="text-xs text-orange relative -top-4 font-bold invisible peer-invalid:visible">Invalid Email</p>
+                    </div>
+                    <div className="w-full md:w-1/3">
+                       <input pattern="\d*" title="Please enter your phone number (digits)" required type="tel" name="phoneNumber" onChange={handleChange} value={state.phoneNumber} className="w-full peer focus:outline-none border-b focus:border-orange border-footerBrown px-4 py-2"/> 
+                       <p className="text-xs md:text-sm font-bold relative -top-[3.5rem] peer-focus:-top-[4rem] duration-500">Phone Number</p>
+                    </div>
+                  </div>
+                <div className="flex flex-col gap-y-4 md:gap-y-0 md:flex-row md:justify-between md:gap-x-3 mt-4">
+                    <div className="w-full md:w-1/3 mb-4">
+                      <CountrySelect />
+                    </div>
+                    <div className="w-full md:w-1/3">
+                      <input required type="text" name="address" onChange={handleChange} value={state.address} className="w-full peer focus:outline-none border-b focus:border-orange border-footerBrown px-4 py-2"/>
+                      <p className="text-xs md:text-sm font-bold relative -top-[3.5rem] peer-focus:-top-[4rem] duration-500">Address</p>
+                    </div>
+                    <div className="w-full md:w-1/3">
+                      <input required type="text" name="nearestAirport" onChange={handleChange} value={state.nearestAirport} className="w-full peer focus:outline-none border-b focus:border-orange border-footerBrown px-4 py-2"/> 
+                      <p className="text-xs md:text-sm font-bold relative -top-[3.5rem] peer-focus:-top-[4rem] duration-500">Nearest Airport To You</p>
+                    </div>
                 </div>
-                <div className="w-full mt-8">
-                      <textarea required name="importantDetails" onChange={handleChange} value={state.importantDetails} className="resize-none w-full peer focus:outline-none border-b focus:border-orange border-footerBrown px-4 py-[0.425rem] cursor-pointer"/> 
-                      <p className="text-xs md:text-sm font-bold relative -top-[5.5rem] peer-focus:-top-[6rem] duration-500">Important Details</p>
-                      <p className="text-xs font-bold relative -top-[1.4rem]">Please provide all relevant dimensions, weight, instructions etc</p>
-                </div>
-                <input type="submit" value={loading ? "Submitting Quote..." : "Submit Quote"} className="w-full text-center text-sm md:text-base py-2 md:py-3 bg-orange text-white mt-4 hover:bg-blue duration-500 cursor-pointer" />
+                <input type="submit" value={loading ? "Submitting Quote..." : "Submit Quote"} className="w-full text-center text-sm md:text-base py-3 bg-orange text-white mt-4 hover:bg-blue duration-500 cursor-pointer" />
             </form>
         </div>
         </>

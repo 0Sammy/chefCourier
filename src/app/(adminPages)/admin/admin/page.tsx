@@ -1,28 +1,35 @@
-import getPackages from "@/app/actions/getPackages";
+import { permanentRedirect } from "next/navigation";
+import getAdmins from "@/app/actions/getAllAdmins";
 
-//Import Providers
+
+//Providers
 import { getUserDetails } from "@/providers/currentUser";
 
 //Import Needed Components
 import AdminHeading from "@/components/(AdminComponents)/AdminHeading";
-import OrderSummary from "@/components/(AdminComponents)/OrderSummary";
+import AllAdmins from "@/components/(AdminComponents)/AllAdmins";
 import AdminDetails from "@/components/(AdminComponents)/AdminDetails";
 
-export const revalidate = 0
+
+export const revalidate = 1
 const page = async () => {
 
+    const admins = await getAdmins()
+    //console.log({admins})
     const { user } = await getUserDetails();
-    const packages = await getPackages(user?.email ?? "super@admin.com")
-    
 
+    //Check the current admin and make the necessary pushes
+    if (user?.role !== "superAdmin"){
+       permanentRedirect('/not-authorized') 
+    }
+    
     return ( 
         <main>
             <AdminDetails adminEmail={user?.email ?? ""} notificationEmail={user?.notificationEmail ?? ""}/>
+
             <div className="px-4 py-4 lg:px-10">
-                <AdminHeading route="home" coloredRoute="orders"/>
-            </div>
-            <div className="bg-bgWhite px-4 py-6 lg:px-10 h-screen">
-                <OrderSummary orders={packages}/>
+                <AdminHeading route="home" coloredRoute="admins"/>
+                <AllAdmins admins={admins}/>
             </div>
         </main>
      );

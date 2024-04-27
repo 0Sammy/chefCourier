@@ -8,16 +8,15 @@ datasource db {
 }
 
 //Schemas
-
 model User {
-  id             String    @id @default(auto()) @map("_id") @db.ObjectId
-  name           String?
-  email          String?   @unique
-  emailVerified  DateTime?
-  hashedPassword String?
-  role           UserRole? @default(USER)
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
+  id                String    @id @default(auto()) @map("_id") @db.ObjectId
+  email             String?   @unique
+  hashedPassword    String
+  notificationEmail String
+  isSuspended       Boolean   @default(false)
+  role              UserRole? @default(admin)
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
 }
 
 model Package {
@@ -31,8 +30,8 @@ model Package {
   length                Float
   width                 Float
   height                Float
-  deliveryRequiredDate  String
   estimatedDeliveryDate String
+  adminEmail            String?               @default("super@admin.com")
   statusChanges         PackageStatusChange[]
   realDateCreated       DateTime              @default(now())
   dateCreated           String
@@ -40,13 +39,14 @@ model Package {
 }
 
 model PackageStatusChange {
-  id            String        @id @default(auto()) @map("_id") @db.ObjectId
-  realTimestamp DateTime      @default(now())
+  id            String   @id @default(auto()) @map("_id") @db.ObjectId
   timestamp     String
   status        String
   location      String?
-  package       Package       @relation(fields: [packageId], references: [id])
-  packageId     String        @db.ObjectId
+  package       Package  @relation(fields: [packageId], references: [id])
+  packageId     String   @db.ObjectId
+  realTimestamp DateTime @default(now())
+  updatedAt     DateTime @updatedAt
 }
 
 model ContactForm {
@@ -56,25 +56,34 @@ model ContactForm {
   subject   String
   message   String
   createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Quote {
-  id               String   @id @default(auto()) @map("_id") @db.ObjectId
-  fullName         String
-  email            String
-  phoneNumber      String
-  pickupLocation   String
-  deliveryLocation String
-  chosenDateTime   String
-  importantDetails String
-  createdAt        DateTime @default(now())
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  fullName       String
+  email          String
+  phoneNumber    String
+  address        String
+  country        String
+  serialNumber   String
+  nearestAirport String
+  createdAt      DateTime @default(now())
+  updateAt       DateTime @updatedAt
+}
+
+model SerialNumber {
+  id           String   @id @default(auto()) @map("_id") @db.ObjectId
+  serialNumber String
+  adminEmail   String
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
 }
 
 //Enums
-
 enum UserRole {
-  USER
-  SUPER_ADMIN
+  admin
+  superAdmin
 }
 
 enum TransportationMode {
@@ -83,4 +92,3 @@ enum TransportationMode {
   Road
   Rail
 }
-

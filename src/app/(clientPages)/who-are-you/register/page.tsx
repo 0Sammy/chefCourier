@@ -5,22 +5,20 @@ import { toast } from "sonner";
 import { makeApiRequest } from "@/lib/apiUtils";
 import { useRouter } from "next/navigation";
 
+//Import Types
+import { accountCreation } from "@/types/default";
+
 //Import Icons
-import { FaRegAddressCard } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { BsEmojiHeartEyesFill } from "react-icons/bs";
 import { FaMehRollingEyes } from "react-icons/fa";
 import { GoPasskeyFill } from "react-icons/go";
 
-type InitialStateProps = {
-  name: string;
-  email: string;
-  password: string;
-};
-const initialState: InitialStateProps = {
-  name: "",
+
+const initialState: accountCreation = {
   email: "",
   password: "",
+  notificationEmail: "",
 };
 export default function Register() {
   const router = useRouter();
@@ -53,18 +51,21 @@ export default function Register() {
     setLoading(true)
     const formData = state;
 
-    if (passPhrase !== process.env.ACCOUNT_CREATION_PASSPHRASE) {
+    //console.log({formData})
+
+    if (passPhrase !== "Aperi portas tuas") {
       toast.error("LMAO, you are playing, STOP PLAYING!!!");
       setLoading(false)
       return;
     }
+
     makeApiRequest("/register", "post", formData, {
       onSuccess: () => {
         // Handle success
         handleFormReset();
         setLoading(false)
         toast.success("Account was created successfully.");
-        router.push("/admin/dashboard");
+        router.push("/who-are-you/login");
       },
       onError: (error: any) => {
         // Handle error
@@ -99,21 +100,10 @@ export default function Register() {
           </span>
         </p>
         <form className="mt-10 w-full" onSubmit={onSubmit}>
+          
           <div className="relative mt-4 w-[20rem] md:w-[30rem]">
             <input
-              className="w-full rounded-md border border-slate-700 bg-bgWhite px-2 py-3 text-sm outline-none placeholder:text-xs focus:border-2 focus:border-orange"
-              type="text"
-              name="name"
-              id="name"
-              value={state.name}
-              placeholder="Your Name"
-              onChange={handleChange}
-            />
-            <FaRegAddressCard size={18} className="absolute right-2 top-4" />
-          </div>
-          <div className="relative mt-4 w-[20rem] md:w-[30rem]">
-            <input
-              className="w-full rounded-md border border-slate-700 bg-bgWhite px-2 py-3 text-sm outline-none placeholder:text-xs focus:border-2 focus:border-orange"
+              className="w-full rounded-md border border-slate-700 px-2 py-3 text-sm outline-none placeholder:text-xs focus:border-2 focus:border-orange"
               type="email"
               name="email"
               id="email"
@@ -125,7 +115,7 @@ export default function Register() {
           </div>
           <div className="relative mt-4 w-[20rem] md:w-[30rem]">
             <input
-              className="w-full rounded-md border border-slate-700 bg-bgWhite px-2 py-3 text-sm outline-none placeholder:text-xs focus:border-2 focus:border-orange"
+              className="w-full rounded-md border border-slate-700 px-2 py-3 text-sm outline-none placeholder:text-xs focus:border-2 focus:border-orange"
               type="text"
               name="passPhrase"
               id="passPhrase"
@@ -138,7 +128,7 @@ export default function Register() {
           <div className="relative mt-4 w-[20rem] md:w-[30rem]">
             <input
               ref={inputRef}
-              className="w-full rounded-md border border-slate-700 bg-bgWhite px-2 py-3 text-sm outline-none placeholder:text-xs focus:border-2 focus:border-orange"
+              className="w-full rounded-md border border-slate-700 px-2 py-3 text-sm outline-none placeholder:text-xs focus:border-2 focus:border-orange"
               type={inputType}
               name="password"
               id="password"
@@ -161,9 +151,21 @@ export default function Register() {
               onClick={toggleInputType}
             />
           </div>
+          <div className="relative mt-4 w-[20rem] md:w-[30rem]">
+            <input
+              className="w-full rounded-md border border-slate-700 bg-bgWhite px-2 py-3 text-sm outline-none placeholder:text-xs focus:border-2 focus:border-orange"
+              type="email"
+              name="notificationEmail"
+              id="name"
+              value={state.notificationEmail}
+              placeholder="Notification Email"
+              onChange={handleChange}
+            />
+            <MdEmail size={18} className="absolute right-2 top-4" />
+          </div>
           <div className="mt-8 flex w-[20rem] justify-between md:w-[30rem]">
             <button
-              className="w-full rounded-md bg-orange py-4 text-center text-xs text-white duration-500 hover:bg-[#EDEDEE] hover:font-semibold hover:text-orange md:text-sm"
+              className="w-full rounded-md bg-orange py-4 text-center text-xs text-white duration-500 hover:bg-white hover:font-semibold hover:text-orange border border-orange md:text-sm"
               type="submit"
             >
               {loading ? "Submitting..." : "Create Account"}

@@ -1,3 +1,5 @@
+import getAllSerialNumber from "../actions/getAllSerialNumbers";
+
 //Components
 import HeroSection from "@/components/(LandingPageComponents)/HeroSection";
 import SecondSection from "@/components/(LandingPageComponents)/SecondSection";
@@ -6,14 +8,17 @@ import FourthSection from "@/components/(LandingPageComponents)/FourthSection";
 import Testimonial from "@/components/(LandingPageComponents)/Testimonial";
 import Contact from "@/components/(LandingPageComponents)/Contact";
 import CTA from "@/components/(LandingPageComponents)/CTA"
-import getPackageWithStatusChanges from "../actions/getIndividualStatus";
 
-export default function Home () {
-  
+
+export default async function Home () {
+
+  const allSerialNumbers = await getAllSerialNumber()
+  const serialNumbers = allSerialNumbers.map(dataObject => dataObject.serialNumber);
+
   return (
     <main className="bg-white">
       <HeroSection />
-      <SecondSection />
+      <SecondSection allSerialNumbers={serialNumbers} />
       <ThirdSection />
       <FourthSection />
       <Testimonial />

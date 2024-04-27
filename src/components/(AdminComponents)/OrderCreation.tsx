@@ -1,34 +1,19 @@
 "use client";
-import { FormEvent, useState } from "react";
-import generateRandomNumber from "@/lib/GenerateTrackingNumber";
-import { useRouter } from "next/navigation";
+import { FormEvent, useEffect, useState } from "react";
+
+//Import Needed Utils
 import { toast } from "sonner";
 import { makeApiRequest } from "@/lib/apiUtils";
+import generateRandomNumber from "@/lib/GenerateTrackingNumber";
+import { useAdminStore } from "@/store/admin";
+
 //Import Icons
 import { RxCross1 } from "react-icons/rx";
 
 //Types
-type OrderDetailsProps = {
-  onClose: () => void;
-};
-type InitialProps = {
-  trackingNumber: string;
-  originPort: string;
-  destinationPort: string;
-  transportationMode: string;
-  pieces: number;
-  length: number;
-  weight: number;
-  width: number;
-  height: number;
-  deliveryRequiredDate: string;
-  statusChanges: object;
-  estimatedDeliveryDate: string;
-  dateCreated: string;
-};
+import { packageProps, OrderDetailsProps } from "@/types/default";
 
-const initialState: InitialProps = {
-  trackingNumber: "",
+const initialState: packageProps = {
   originPort: "",
   destinationPort: "",
   transportationMode: "",
@@ -37,24 +22,23 @@ const initialState: InitialProps = {
   weight: 0.0,
   width: 0.0,
   height: 0.0,
-  deliveryRequiredDate: "",
   statusChanges: {},
   estimatedDeliveryDate: "",
   dateCreated: "",
 };
 
 const OrderCreation = ({ onClose }: OrderDetailsProps) => {
-  const router = useRouter();
+  const { email } = useAdminStore()
   //Form State
   const [state, setState] = useState(initialState);
   const [loading, setLoading] = useState<boolean>(false);
   //Tracking Code State and Function
   const [trackingCode, setTrackingCode] = useState<string>("");
 
-  const handleGenerateCode = () => {
+  useEffect(() => {
     const newTrackingCode = generateRandomNumber();
     setTrackingCode(newTrackingCode);
-  };
+  },[])
 
   //Function for the State Changing
   const handleChange = (event: any) => {
@@ -88,7 +72,10 @@ const OrderCreation = ({ onClose }: OrderDetailsProps) => {
     event.preventDefault();
     setLoading(true);
 
-    makeApiRequest("/packages", "post", state, {
+    const formData = {...state, trackingNumber:trackingCode, adminEmail:email}
+    console.log({formData})
+
+    makeApiRequest("/packages", "post", formData, {
       onSuccess: () => {
         // Handle success
         handleFormReset()
@@ -118,7 +105,7 @@ const OrderCreation = ({ onClose }: OrderDetailsProps) => {
         <div className="flex justify-end">
           <RxCross1
             size={24}
-            className="cursor-pointer"
+            className="cursor-pointer text-red-600"
             onClick={closeToggle}
           />
         </div>
@@ -126,29 +113,8 @@ const OrderCreation = ({ onClose }: OrderDetailsProps) => {
           Fill In The Details of The New Package
         </p>
         <form className="mt-4 text-xs md:text-sm" onSubmit={onSubmit}>
-          <div className="w-full">
-            <label htmlFor="trackingNumber" className="block cursor-pointer">
-              Tracking Number
-            </label>
-            <input
-              required
-              value={state.trackingNumber}
-              onChange={handleChange}
-              type="text"
-              name="trackingNumber"
-              id="trackingNumber"
-              className="mt-2 w-full rounded-md border border-black bg-white p-2 text-black focus:outline-orange md:p-3"
-            />
-          </div>
-          <div className="mt-2 flex items-center gap-x-3 md:gap-x-5">
-            <p className="w-[70%] text-xs md:text-sm">{trackingCode}</p>
-            <button
-              type="button"
-              onClick={handleGenerateCode}
-              className="w-[30%] rounded-md bg-orange py-2 text-center text-xs text-white duration-500 hover:bg-orange1 sm:text-sm md:py-3 md:text-base"
-            >
-              Generate
-            </button>
+          <div className="my-4">
+            <p className="w-[70%] text-xs md:text-sm font-medium">The Tracking Code: <span className="font-semibold">{trackingCode}</span></p>
           </div>
           <div className="mt-2">
             <label htmlFor="originPort" className="block cursor-pointer">
