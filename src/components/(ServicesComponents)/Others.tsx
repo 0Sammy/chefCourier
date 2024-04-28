@@ -3,7 +3,7 @@ import Link from "next/link";
 //Import Images
 import other from "../../../public/images/other.jpeg";
 import other1 from "../../../public/images/other1.jpeg";
-import logo from "../../../public/images/logo.png";
+import logo from "../../../public/images/logo.svg";
 //Import Icons
 import { MdGppGood } from "react-icons/md";
 
@@ -36,7 +36,7 @@ const Others = () => {
             className="transform rounded-xl duration-500 hover:scale-105"
             placeholder="blur"
           />
-          <div className="absolute bottom-0 left-0">
+          <div className="absolute bottom-0left-0 w-6 md:w-10 ">
             <Image
               src={logo}
               alt="KJC Solution Logo"
@@ -51,7 +51,7 @@ const Others = () => {
             className="transform rounded-xl duration-500 hover:scale-105"
             placeholder="blur"
           />
-          <div className="absolute bottom-0 right-0">
+          <div className="absolute bottom-0 right-0 w-6 md:w-10">
             <Image
               src={logo}
               alt="KJC Solution Logo"
