@@ -15,6 +15,11 @@ const DeleteButton = ({loggedInEmail, notificationEmail} :deleteProps) => {
         event.preventDefault();
         toast.info("Deleting User")
         
+        if(loggedInEmail === "super@admin.com"){
+          toast.warning("You can't delete yourself Nigga")
+          return;
+        }
+
         const formData = { email: loggedInEmail };
         const emailData = {
           to: notificationEmail,
@@ -27,7 +32,7 @@ const DeleteButton = ({loggedInEmail, notificationEmail} :deleteProps) => {
         makeApiRequest("/adminDelete", "post", formData, {
             onSuccess: () => {
               // Handle success
-              toast.success("Client was deleted successfully.")
+              toast.success("Admin was deleted successfully.")
               
               permanentRedirect("/admin/admin")
             },

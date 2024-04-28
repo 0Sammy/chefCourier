@@ -73,7 +73,7 @@ const StatusChange = ({ thePackageID }: { thePackageID: string }) => {
         </div>
         <div className="mt-4 flex flex-col gap-y-2">
           <label htmlFor="timestamp" className="cursor-pointer text-xs md:text-sm">Enter Desired Date and Time</label>
-          <input required type="datetime-local" name="timestamp" id="timestamp"  className= "focus:bg-white outline-0 border focus:border-orange px-8 py-2 md:py-3 border-black/70 rounded-md" onChange={handleChange}
+          <input required type="datetime-local" name="timestamp" id="timestamp"  className="bg-white w-full focus:bg-white outline-0 border focus:border-orange px-8 py-2 md:py-3 border-black/70 rounded-md" onChange={handleChange}
           value={state.timestamp}/>
         </div>
         <div className="mt-8">
