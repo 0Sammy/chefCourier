@@ -53,13 +53,12 @@ export default function QuoteForm({ allSerialNumbers }: any){
     event.preventDefault();
     setLoading(true)
 
-    const serialNumbers = allSerialNumbers.map((dataObject: { serialNumber: any; }) => dataObject.serialNumber);
-
-    if (!serialNumbers.includes(state.serialNumber)) {
-      toast.error("Serial number does not exist. Kindly enter the correct one.")
-      setLoading(false)
-      return
-    } 
+    if (!allSerialNumbers.some((dataObject: { serialNumber: string; }) => dataObject.serialNumber === state.serialNumber)) {
+      toast.error("Serial number does not exist. Kindly enter the correct one.");
+      setLoading(false);
+      return;
+    }
+    
 
     const adminEmail = allSerialNumbers.find((serialNumber: { serialNumber: string; }) => serialNumber.serialNumber === state.serialNumber)
     
@@ -84,16 +83,16 @@ export default function QuoteForm({ allSerialNumbers }: any){
         setStatus("success")
         setShow(true)
         handleFormReset();
-        makeApiRequest("/send-email", "post", emailData, {
-          onSuccess: () => {
-            // Handle success
-            console.log("Email was sent successfully.")
-          },
-          onError: (error: any) => {
-            // Handle error
-            console.log("Couldn't send email, due to some error. " + error.message)
-          },
-        });
+          makeApiRequest("/send-email", "post", emailData, {
+            onSuccess: () => {
+              // Handle success
+              console.log("Email was sent successfully.")
+            },
+            onError: (error: any) => {
+              // Handle error
+              console.log("Couldn't send email, due to some error. " + error.message)
+            },
+          });
         window.location.reload()
       },
       onError: (error: any) => {
