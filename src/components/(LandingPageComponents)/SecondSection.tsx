@@ -6,7 +6,7 @@ import QuoteForm from "./QuoteForm";
 import TrackingForm from "./TrackingForm";
 
 
-export default function Forms({ allSerialNumbers }: { allSerialNumbers: string[] }){
+export default function Forms({ allSerialNumbers }: any){
  //The Form States
   const [quoteForm, setQuoteForm] = useState<boolean>(true)
  //Toggling Function
@@ -22,7 +22,7 @@ export default function Forms({ allSerialNumbers }: { allSerialNumbers: string[]
                     <button onClick={toggleForm} className={`${!quoteForm ? "bg-orange text-white" : "" } hover:bg-orange hover:text-black transform hover:translate-x-2 duration-500 border-2 border-orange text-orange text-sm md:text-base px-2 sm:px-4 md:px-6 lg:px-8 py-2`}>Track and Trace</button>
                 </div>
                 <div>
-                    {quoteForm ? <QuoteForm allSerialNumbers={allSerialNumbers}/> : <TrackingForm />}
+                    {quoteForm ? <QuoteForm allSerialNumbers={allSerialNumbers} /> : <TrackingForm />}
                 </div>
             </div>
         </main>

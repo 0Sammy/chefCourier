@@ -1,12 +1,18 @@
+import getAllQuote from "@/app/actions/getAllQuote";
+
 //Import Needed Components
 import AdminHeading from "@/components/(AdminComponents)/AdminHeading";
-import getAllQuote from "@/app/actions/getAllQuote";
 import QuoteDetails from "@/components/(AdminComponents)/QuoteDetails";
 
-export const revalidate = 1
+//Import Providers
+import { getUserDetails } from "@/providers/currentUser";
 
+export const revalidate = 0
 const page = async () => {
-    const quoteDetails = await getAllQuote()
+
+    const { user } = await getUserDetails();
+    const quoteDetails = await getAllQuote(user?.email ?? "super@admin.com")
+    //console.log({quoteDetails})
     
     return ( 
         <main>

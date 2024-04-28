@@ -63,7 +63,7 @@ const Sidebar = ({currentRole}: {currentRole: string}) => {
             <Link
               href="/admin/admin"
               prefetch
-              className={`${pathName === "/admin/quote" ? "text-orange -translate-y-2 translate-x-2" : "text-white"} flex items-center gap-x-3 rounded-md p-4 text-sm  duration-500 hover:-translate-y-2 hover:translate-x-2 hover:text-orange hover:underline focus:-translate-y-2 focus:translate-x-2 focus:text-orange active:text-orange md:text-base`}
+              className={`${pathName === "/admin/admin" ? "text-orange -translate-y-2 translate-x-2" : "text-white"} flex items-center gap-x-3 rounded-md p-4 text-sm  duration-500 hover:-translate-y-2 hover:translate-x-2 hover:text-orange hover:underline focus:-translate-y-2 focus:translate-x-2 focus:text-orange active:text-orange md:text-base`}
             >
             <RiAdminFill  size={24} /> Admin
             </Link>
@@ -78,7 +78,7 @@ const Sidebar = ({currentRole}: {currentRole: string}) => {
         </button>
       </div>
       <LuMenuSquare
-        className="relative left-4 top-4 mt-2 cursor-pointer text-orange focus:text-blue lg:hidden z-40"
+        className="relative left-4 top-4 mt-2 cursor-pointer text-orange focus:text-blue lg:hidden z-[40]"
         size={40}
         onClick={toggleOpen}
       />
@@ -132,7 +132,7 @@ const Sidebar = ({currentRole}: {currentRole: string}) => {
                 <Link
                   href="/admin/admin"
                   prefetch
-                  className={`${pathName === "/admin/quote" ? "text-orange -translate-y-2 translate-x-2" : "text-white"} flex items-center gap-x-3 rounded-md p-4 text-sm  duration-500 hover:-translate-y-2 hover:translate-x-2 hover:text-orange hover:underline focus:-translate-y-2 focus:translate-x-2 focus:text-orange active:text-orange md:text-base`}
+                  className={`${pathName === "/admin/admin" ? "text-orange -translate-y-2 translate-x-2" : "text-white"} flex items-center gap-x-3 rounded-md p-4 text-sm  duration-500 hover:-translate-y-2 hover:translate-x-2 hover:text-orange hover:underline focus:-translate-y-2 focus:translate-x-2 focus:text-orange active:text-orange md:text-base`}
                 >
                 <RiAdminFill  size={24} /> Admin
                 </Link>

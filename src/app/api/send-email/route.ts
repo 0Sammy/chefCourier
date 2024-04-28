@@ -2,6 +2,7 @@
 import SuspendTemplate from "../../../../emails/SuspendTemplate";
 import RevokeSuspensionTemplate from "../../../../emails/RevokeSuspension";
 import AccountDeletedTemplate from "../../../../emails/AccountDeleted";
+import QuoteTemplate from "../../../../emails/Quote";
 
 //Needed Utils
 import { render } from "@react-email/render";
@@ -12,7 +13,7 @@ import { sendEmail } from "@/lib/email";
 export async function POST(request: Request) {
     const body = await request.json();
     try {
-        const { to, subject, emailType} = body;
+        const { to, subject, emailType, fullName, email, phoneNumber, address, country, nearestAirport, serialNumber} = body;
 
         if (!to || !subject || !emailType ) {
 
@@ -32,6 +33,9 @@ export async function POST(request: Request) {
           case "adminDeleted":
             emailHtml = render(AccountDeletedTemplate());
             break;
+          case "quote":
+              emailHtml = render(QuoteTemplate({fullName, email, phoneNumber, address, country, nearestAirport, serialNumber}));
+              break;
           default:
             throw new Error('Invalid emailType');
         }

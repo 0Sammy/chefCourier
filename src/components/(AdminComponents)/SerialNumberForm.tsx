@@ -21,7 +21,7 @@ const SerialNumberForm = ({serialNumbers}: {serialNumbers : serialNumber[]}) => 
     },[])
 
     //States
-    const { email } = useAdminStore()
+    const { email, notificationEmail } = useAdminStore()
     const [newNumber, setNewNumber] = useState<string>("")
     const [loading, setLoading]= useState<boolean>(false)
 
@@ -29,7 +29,7 @@ const SerialNumberForm = ({serialNumbers}: {serialNumbers : serialNumber[]}) => 
         event.preventDefault()
         setLoading(true)
 
-        const formData: { adminEmail: string; serialNumber: string; } = { adminEmail: email, serialNumber: newNumber }
+        const formData: { adminEmail: string; adminNotificationEmail: string, serialNumber: string; } = { adminEmail: email, adminNotificationEmail: notificationEmail,  serialNumber: newNumber }
         console.log({formData})
         
         makeApiRequest("/createSerialNumber", "post", formData, {

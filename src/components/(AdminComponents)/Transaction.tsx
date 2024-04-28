@@ -11,7 +11,7 @@ import { PiPackageFill } from "react-icons/pi";
 const Transaction = (orders : any) => {
     const router = useRouter()
     return ( 
-        <main className="mt-10 overflow-x-auto special">
+        <main className="mt-10 overflow-x-auto special text-xs md:text-sm xl:text-base">
             <div className="flex justify-between w-full min-w-[40rem]">
                 <p className="text-lg lg:text-xl font-bold">Ongoing Shipments</p>
                 <p className="text-gray-500">Your Last 7 Shipments</p>
@@ -21,11 +21,11 @@ const Transaction = (orders : any) => {
             {orders.length !== 0 && <div className="mt-10 w-full min-w-[40rem]"> 
             {orders?.orders && orders.orders.map((order: any) => (
                     <div key={order.id} onClick={() => router.push(`/admin/orders/${order.id}`)}className="flex justify-between items-center mt-4 border-b border-gray-400 py-2 cursor-pointer">
-                    <PiPackageFill className="text-orange" size={30}/>
-                    <p className="text-base sm:text-lg lg:text-xl font-bold w-1/4 text-center">{order.trackingNumber}</p>
-                    <p className="text-base sm:text-lg lg:text-xl font-bold w-1/4 text-center">{order.originPort}</p>
-                    <p className="text-base sm:text-lg lg:text-xl font-bold w-1/4 text-center">{new Date(order.deliveryRequiredDate).toLocaleDateString()}</p>
-                    <p className="text-sm lg:text-base w-1/4 text-center text-green-600 font-semibold">{formatDateTime(order.dateCreated)}</p>
+                    <PiPackageFill className="text-orange mr-2" size={30}/>
+                    <p className="font-semibold w-1/4">{order.trackingNumber}</p>
+                    <p className="font-semibold w-1/4">{order.originPort}</p>
+                    <p className="font-semibold w-1/4">{order.destinationPort}</p>
+                    <p className="w-1/4 text-green-600 font-semibold">{formatDateTime(order.dateCreated)}</p>
                 </div>  
              ))}
             </div>

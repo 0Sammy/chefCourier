@@ -1,19 +1,15 @@
 import { prisma } from "@/lib/prismadb";
 
-export default async function getAllQuote(email: string) {
+export default async function getAllSerialNumberWithoutEmail() {
   try {
-    const allQuote = await prisma.quote.findMany({
-
-      where: {
-        adminEmail: email
-      },
-
+    const allSerialNumbers = await prisma.serialNumber.findMany({
+      
       orderBy: {
         createdAt: "desc"
     }
     });
 
-    return allQuote;
+    return allSerialNumbers;
     
   } catch (error: any) {
     console.error(error);

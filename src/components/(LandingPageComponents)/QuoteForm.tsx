@@ -1,7 +1,10 @@
 "use client"
 import { FormEvent, useState } from "react";
+
+//Import Utils and Stores
 import { makeApiRequest } from "@/lib/apiUtils";
 import { toast } from "sonner";
+import { useQuoteStore } from "@/store/quote";
 
 //Import Types
 import { quoteProps } from "@/types/default";
@@ -15,6 +18,7 @@ import StatusModal from "./StatusModal";
 const initialState: quoteProps = {
     fullName: "",
     email: "",
+    adminEmail: "",
     phoneNumber: "",
     address: "",
     country: "",
@@ -22,22 +26,25 @@ const initialState: quoteProps = {
     nearestAirport: "",
 };
 
-export default function QuoteForm({ allSerialNumbers }: { allSerialNumbers: string[]; }){
+export default function QuoteForm({ allSerialNumbers }: any){
+  
     //Form States and Functions
+    const { country } = useQuoteStore()
     const [state, setState] = useState(initialState)
     const [loading, setLoading] = useState<boolean>(false)
     const [status, setStatus] = useState<string>("")
     const [show, setShow] = useState<boolean>(false)
-    //Status Modal Function
-    const handleHideModal = () => {
-     return setShow((prev) => !prev);
-    };
-    //Function for the State Changing
-   const handleChange = (event: any) => {
+
+  //Status Modal Function
+  const handleHideModal = () => {
+   return setShow((prev) => !prev);
+  };
+  //Function for the State Changing
+    const handleChange = (event: any) => {
     setState({ ...state, [event.target.name]: event.target.value });
   };
   //Function for the Form Reset
-  const handleFormReset = () => {
+    const handleFormReset = () => {
     setState(initialState);
   };
 
@@ -46,21 +53,48 @@ export default function QuoteForm({ allSerialNumbers }: { allSerialNumbers: stri
     event.preventDefault();
     setLoading(true)
 
-    if (!allSerialNumbers.includes(state.serialNumber)) {
+    const serialNumbers = allSerialNumbers.map((dataObject: { serialNumber: any; }) => dataObject.serialNumber);
+
+    if (!serialNumbers.includes(state.serialNumber)) {
       toast.error("Serial number does not exist. Kindly enter the correct one.")
       setLoading(false)
       return
+    } 
+
+    const adminEmail = allSerialNumbers.find((serialNumber: { serialNumber: string; }) => serialNumber.serialNumber === state.serialNumber)
+    
+    if (!adminEmail){
+      setLoading(false)
+      handleFormReset();
+      setStatus("failure")
+      setShow(true)
+      return; 
     }
 
-    const formData = state;
+    const formData = {...state, country: country, adminEmail: adminEmail.adminEmail };
+    const emailData = {...state, country: country, to: adminEmail.adminNotificationEmail, subject:"New Quote", emailType: "quote"}
+    
+    //console.log({formData})
+    //console.log({emailData})
 
     makeApiRequest("/quote", "post", formData, {
       onSuccess: () => {
         // Handle success
-        handleFormReset();
         setLoading(false)
         setStatus("success")
         setShow(true)
+        handleFormReset();
+        makeApiRequest("/send-email", "post", emailData, {
+          onSuccess: () => {
+            // Handle success
+            console.log("Email was sent successfully.")
+          },
+          onError: (error: any) => {
+            // Handle error
+            console.log("Couldn't send email, due to some error. " + error.message)
+          },
+        });
+        window.location.reload()
       },
       onError: (error: any) => {
         // Handle error

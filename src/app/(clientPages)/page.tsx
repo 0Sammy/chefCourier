@@ -1,4 +1,4 @@
-import getAllSerialNumber from "../actions/getAllSerialNumbers";
+import getAllSerialNumberWithoutEmail from "../actions/getAllSerialNumbersWithoutEmail";
 
 //Components
 import HeroSection from "@/components/(LandingPageComponents)/HeroSection";
@@ -10,15 +10,16 @@ import Contact from "@/components/(LandingPageComponents)/Contact";
 import CTA from "@/components/(LandingPageComponents)/CTA"
 
 
+
 export default async function Home () {
 
-  const allSerialNumbers = await getAllSerialNumber()
-  const serialNumbers = allSerialNumbers.map(dataObject => dataObject.serialNumber);
+  const allSerialNumbers = await getAllSerialNumberWithoutEmail()
+  
 
   return (
     <main className="bg-white">
       <HeroSection />
-      <SecondSection allSerialNumbers={serialNumbers} />
+      <SecondSection allSerialNumbers={allSerialNumbers} />
       <ThirdSection />
       <FourthSection />
       <Testimonial />

@@ -2,6 +2,7 @@
 export type quoteProps = {
   fullName: string;
   email: string;
+  adminEmail: string;
   phoneNumber: string;
   address: string;
   country: string;
@@ -60,7 +61,19 @@ export type deleteProps = {
 export type serialNumber = {
     id: string;
     serialNumber: string;
+    adminNotificationEmail: string;
     adminEmail: string;
     createdAt: Date;
     updatedAt: Date;
 }
+
+//For Quote Email
+export type emailProps = {
+  fullName?: string;
+  email?: number;
+  phoneNumber?: string;
+  address?: string;
+  country?: string;
+  nearestAirport?: string;
+  serialNumber?: string;
+};

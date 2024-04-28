@@ -24,7 +24,7 @@ const page = async () => {
    const packages = await getPackages(user?.email ?? "super@admin")
    const status = await getAllStatus()
    const forms = await getAllContactForms()
-   const quotes = await getAllQuote()
+   const quotes = await getAllQuote(user?.email ?? "super@admin.com")
    //Sort the status and get the values
    const deliveredItems = status.filter(item => item.status === 'Delivered');
 
