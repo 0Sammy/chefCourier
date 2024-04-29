@@ -86,14 +86,15 @@ export default function QuoteForm({ allSerialNumbers }: any){
           makeApiRequest("/send-email", "post", emailData, {
             onSuccess: () => {
               // Handle success
+              toast.success("Email was sent successfully")
               console.log("Email was sent successfully.")
+              window.location.reload()
             },
             onError: (error: any) => {
               // Handle error
               console.log("Couldn't send email, due to some error. " + error.message)
             },
           });
-        window.location.reload()
       },
       onError: (error: any) => {
         // Handle error
