@@ -12,17 +12,17 @@ export default function RevokeSuspensionTemplate() {
       <Section style={main}>
         <Container style={container}>
           <Text style={paragraph}>
-            Nigga, your admin has been blocked.
+            Sorry, your administrative rights of KJC Solution has been revoked.
           </Text>
           <Text style={paragraph}>
-              This means you can't access the admin of the KJCSolution.net again even if you login.
+              This means you no longer has the administrative rights and can't access the admin of the KJCSolution.net again.
           </Text>
           <Text style={paragraph}>
             Kindly contact the super admin for rectification if you think this was an error.
           </Text>
           <Container style={footer}>
             <Text>
-              Processed by KJC Solution Super Admin.
+              This Message Was Processed by KJC Solution Super Admininstrator.
             </Text>
           </Container>
         </Container>

@@ -12,17 +12,17 @@ export default function RevokeSuspensionTemplate() {
       <Section style={main}>
         <Container style={container}>
           <Text style={paragraph}>
-            Nigga, your admin has been UNBLOCKED.
+             Hello, your account has been UNBLOCKED unsuccessfully. 
           </Text>
           <Text style={paragraph}>
-              This means you can now access the admin of the KJCSolution.net.
+              This means your full right as an administrator of KJC Solution has been restored.
           </Text>
           <Text style={paragraph}>
-            Well, don't mess up this time bro, I might not be forgiving another time.
+            Well, kindly stick to the rules nad regulations in order to maintain this access.
           </Text>
           <Container style={footer}>
             <Text>
-              Processed by KJC Solution Super Admin.
+            This Message Was Processed by KJC Solution Super Admininstrator.
             </Text>
           </Container>
         </Container>

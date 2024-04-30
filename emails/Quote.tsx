@@ -34,7 +34,7 @@ export default function QuoteTemplate({fullName, email, phoneNumber, address, co
           </Text>
           <Container style={footer}>
             <Text>
-              This Prompt Was Processed by KJC Solution Super Admininstrator.
+              This Message Was Processed by KJC Solution Super Admininstrator.
             </Text>
           </Container>
         </Container>

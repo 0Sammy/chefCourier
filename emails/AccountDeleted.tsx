@@ -12,18 +12,17 @@ export default function AccountDeletedTemplate() {
       <Section style={main}>
         <Container style={container}>
           <Text style={paragraph}>
-            Nigga, your account has been DELETED.
+              Sorry, your account has been DELETED.
           </Text>
           <Text style={paragraph}>
-              You think I am joking? Enter KJCSolution.net let me see deepshit.
+              This is due to your incompliance to our rules and regulations.
           </Text>
           <Text style={paragraph}>
-            Have a nice day, and don't come snupping around, we whoop peoples' goddamn asses here.
-            Have a nice life.
+            If you think this was a mistake, kindly contact the Super Admininstrator.
           </Text>
           <Container style={footer}>
             <Text>
-              Processed by KJC Solution Super Admin.
+              This Message Was Processed by KJC Solution Super Administrator.
             </Text>
           </Container>
         </Container>
