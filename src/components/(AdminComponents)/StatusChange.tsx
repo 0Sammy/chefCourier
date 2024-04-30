@@ -18,7 +18,7 @@ const initialState: InitialStateProps = {
   timestamp: "",
 };
 const StatusChange = ({ thePackageID }: { thePackageID: string }) => {
-    const router = useRouter()
+  const router = useRouter()
   const [state, setState] = useState(initialState);
   const [loading, setLoading] = useState<boolean>(false);
   //OnChange Function
