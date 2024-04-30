@@ -1,5 +1,6 @@
 "use client";
 import { FormEvent, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 //Import Needed Utils
 import { toast } from "sonner";
@@ -28,6 +29,7 @@ const initialState: packageProps = {
 };
 
 const OrderCreation = ({ onClose }: OrderDetailsProps) => {
+  const router = useRouter()
   const { email } = useAdminStore()
   //Form State
   const [state, setState] = useState(initialState);
@@ -73,7 +75,7 @@ const OrderCreation = ({ onClose }: OrderDetailsProps) => {
     setLoading(true);
 
     const formData = {...state, trackingNumber:trackingCode, adminEmail:email}
-    console.log({formData})
+    //console.log({formData})
 
     makeApiRequest("/packages", "post", formData, {
       onSuccess: () => {
@@ -81,7 +83,7 @@ const OrderCreation = ({ onClose }: OrderDetailsProps) => {
         handleFormReset()
         setLoading(false);
         toast.success("The Package was created successfully.");
-        window.location.reload()
+        router.refresh();
       },
       onError: (error: any) => {
         // Handle error
