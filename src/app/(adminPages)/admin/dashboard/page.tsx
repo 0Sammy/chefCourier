@@ -16,7 +16,7 @@ import AdminDetails from "@/components/(AdminComponents)/AdminDetails";
 
 
 
-export const revalidate = 1
+export const revalidate = 0
 const page = async () => {
 
    const { user } = await getUserDetails();

@@ -7,7 +7,7 @@ import StatusChange from "@/components/(AdminComponents)/StatusChange";
 import Status from "@/components/(AdminComponents)/Status";
 
 
-export const revalidate = 1
+export const revalidate = 0
 const Page = async ({ params }: { params: { id: string } }) => {
     const packageId = params.id
 

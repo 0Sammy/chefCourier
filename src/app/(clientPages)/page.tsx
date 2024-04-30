@@ -10,7 +10,7 @@ import Contact from "@/components/(LandingPageComponents)/Contact";
 import CTA from "@/components/(LandingPageComponents)/CTA"
 
 
-
+export const revalidate = 0
 export default async function Home () {
 
   const allSerialNumbers = await getAllSerialNumberWithoutEmail()

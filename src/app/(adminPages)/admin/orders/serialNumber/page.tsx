@@ -8,7 +8,7 @@ import AdminDetails from "@/components/(AdminComponents)/AdminDetails";
 import SerialNumberForm from "@/components/(AdminComponents)/SerialNumberForm";
 
 
-export const revalidate = 1
+export const revalidate = 0
 const page = async () => {
 
     const { user } = await getUserDetails();
