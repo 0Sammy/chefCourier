@@ -14,10 +14,11 @@ export default function QuoteTemplate({fullName, email, phoneNumber, address, co
       <Section style={main}>
         <Container style={container}>
           <Text style={paragraph}>
-            Nigga, one of your client just made a quote.
+            We are pleased to inform you that a quotation has been made by one of our valued clients.
+            Your prompt attention to this matter would be greatly appreciated.
           </Text>
           <Text style={paragraph}>
-              Yeah, see the information below.
+              The details of the quotation are listed below.
           </Text>
           <Text style={detailsParagraph}>
             Details of the Quote:
@@ -33,7 +34,7 @@ export default function QuoteTemplate({fullName, email, phoneNumber, address, co
           </Text>
           <Container style={footer}>
             <Text>
-              Processed by KJC Solution Super Admin.
+              This Prompt Was Processed by KJC Solution Super Admininstrator.
             </Text>
           </Container>
         </Container>
